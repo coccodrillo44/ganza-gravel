@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Strade Bianche del Chianti Pisano & Degustazione</name>
+    <desc>L'itinerario perfetto per combinare la passione per la bicicletta gravel con l'eccellenza enogastronomica toscana. Terricciola è ufficialmente la Città del Vino della provincia di Pisa. Il percorso attraversa le vigne di Sangiovese e Vermentino, lambisce la millenaria Badia di Morrona e offre soste degustazione indimenticabili in cantina.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.825Z</time>
+  </metadata>
+  <wpt lat="43.5255" lon="10.6795">
+    <name>🍇 Terricciola Città del Vino (Km 0)</name>
+    <desc>Piazza centrale e vista sulle vallate</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.512" lon="10.665">
+    <name>⛪ Badia di Morrona (Km 12)</name>
+    <desc>Antica abbazia e tenuta vinicola storica</desc>
+    <sym>cultura</sym>
+  </wpt>
+  <wpt lat="43.498" lon="10.692">
+    <name>🌱 Soiana & Le Vigne (Km 24)</name>
+    <desc>Ghiaia battuta tra vigne e uliveti ordinati</desc>
+    <sym>natura</sym>
+  </wpt>
+  <wpt lat="43.531" lon="10.71">
+    <name>🍷 Rientro & Degustazione (Km 38)</name>
+    <desc>Tagliere toscano e degustazione in enoteca</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <trk>
+    <name>Strade Bianche del Chianti Pisano & Degustazione</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.5255" lon="10.6795">
+        <ele>180</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.512" lon="10.665">
+        <ele>90</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.498" lon="10.692">
+        <ele>160</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.531" lon="10.71">
+        <ele>85</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.5255" lon="10.6795">
+        <ele>180</ele>
+        <name>Punto 5</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

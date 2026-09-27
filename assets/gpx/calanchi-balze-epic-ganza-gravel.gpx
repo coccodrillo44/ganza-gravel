@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>L'Anello dei Calanchi & Castelli della Valdera</name>
+    <desc>Un anello affascinante che parte dal borgo medievale di Palaia e tocca il misterioso borgo disabitato di Toiano, sospeso su speroni di argilla e calanchi. Si alternano strade bianche compatte, brevi salite panoramiche e tratti ombreggiati nei boschi di lecci, con una vista straordinaria sul cuore della Valdera.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.827Z</time>
+  </metadata>
+  <wpt lat="43.6062" lon="10.7712">
+    <name>🏰 Palaia Rocca Medievale (Km 0)</name>
+    <desc>Piazza del Mercato a Palaia</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.585" lon="10.792">
+    <name>👻 Toiano Borgo Fantasma (Km 16)</name>
+    <desc>Suggestivo ponte sul precipizio e case abbandonate</desc>
+    <sym>cultura</sym>
+  </wpt>
+  <wpt lat="43.558" lon="10.812">
+    <name>🌾 Forcoli & Valli dell'Era (Km 32)</name>
+    <desc>Pianure sterrate veloci lungo il torrente</desc>
+    <sym>natura</sym>
+  </wpt>
+  <wpt lat="43.572" lon="10.741">
+    <name>⛪ Pieve di San Martino (Km 45)</name>
+    <desc>Capolavoro romanico in cotto toscano</desc>
+    <sym>storia</sym>
+  </wpt>
+  <wpt lat="43.6062" lon="10.7712">
+    <name>🍕 Rientro a Palaia (Km 54)</name>
+    <desc>Sosta alla pizzeria/osteria con terrazza panoramica</desc>
+    <sym>arrivo</sym>
+  </wpt>
+  <trk>
+    <name>L'Anello dei Calanchi & Castelli della Valdera</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.6062" lon="10.7712">
+        <ele>240</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.585" lon="10.792">
+        <ele>110</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.558" lon="10.812">
+        <ele>210</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.572" lon="10.741">
+        <ele>90</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.6062" lon="10.7712">
+        <ele>240</ele>
+        <name>Punto 5</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

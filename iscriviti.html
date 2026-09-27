@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iscriviti | Tesseramento A.S.D. Ganza Gravel 2026</title>
+  <meta name="description" content="Diventa socio dell'A.S.D. Ganza Gravel: tesseramento 2026 con assicurazione FCI, maglia sociale ufficiale, sconti su tutti i raduni e convenzioni nel territorio pisano.">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Iscriviti all'A.S.D. Ganza Gravel | Tesseramento 2026">
+  <meta property="og:description" content="Unisciti alla nostra associazione sportiva: pedala in sicurezza con assicurazione FCI, sconti sui raduni e maglia sociale esclusiva.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ganzagravel.it/iscriviti.html">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="iscriviti">
+
+  <!-- Floating Social Dock a Sinistra in Sovraimpressione -->
+  <aside class="floating-social-dock" aria-label="Social Ganza Gravel">
+    <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn instagram" aria-label="Instagram" title="Seguici su Instagram (@ganzagravel)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="dock-tooltip">Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn facebook" aria-label="Facebook" title="Pagina Facebook Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      <span class="dock-tooltip">Facebook</span>
+    </a>
+    <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="dock-social-btn strava" aria-label="Strava Club" title="Strava Club Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+      </svg>
+      <span class="dock-tooltip">Strava</span>
+    </a>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="dock-social-btn whatsapp" aria-label="WhatsApp Community" title="Chatta con noi su WhatsApp (351 5996770)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span class="dock-tooltip">WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Header di Navigazione Principale -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+        <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="eventi.html" class="nav-link">Eventi</a>
+        <a href="travel.html" class="nav-link">Ganza Travel</a>
+        <a href="convenzioni.html" class="nav-link">Convenzioni</a>
+        <a href="percorsi.html" class="nav-link">Mappe & GPX</a>
+        <a href="store.html" class="nav-link">Ganza Store</a>
+        <a href="chi-siamo.html" class="nav-link">Chi Siamo</a>
+        <a href="iscriviti.html" class="nav-link active">Iscriviti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="account-btn" id="accountHeaderBtn" onclick="handleAccountBtnClick()" aria-label="Area Personale" title="Area Personale">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="account-dot" id="accountDot"></span>
+        </button>
+
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="Carrello">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.3rem;">GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      <button class="close-drawer">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="profilo.html" id="mobileAccountLink">👤 Il Mio Profilo / Accedi</a>
+      <a href="index.html">Home</a>
+      <a href="eventi.html">Eventi & Raduni</a>
+      <a href="travel.html">Ganza Travel</a>
+      <a href="convenzioni.html">Convenzioni</a>
+      <a href="percorsi.html">Percorsi & Tracce GPX</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Ganza Store</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="iscriviti.html" class="active">Iscriviti</a>
+    </nav>
+
+    <!-- Social Bar nel Mobile Drawer -->
+    <div class="drawer-socials">
+      <span class="drawer-social-label">Seguici sui Social:</span>
+      <div class="drawer-social-icons">
+        <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+          </svg>
+        </a>
+        <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION TESSERAMENTO -->
+    <section class="section" style="background: linear-gradient(135deg, var(--forest) 0%, var(--primary-dark) 100%); color: var(--white); padding: 70px 0 50px 0;">
+      <div class="container text-center" style="max-width: 820px;">
+        <span class="hero-meta" style="background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); margin-bottom: 20px;">
+          🚴 A.S.D. GANZA GRAVEL • TESSERAMENTO 2026 APERTO
+        </span>
+        <h1 style="color: var(--white); font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px;">
+          Entra nella Ribotta Ganza <br>
+          <span class="highlight">Diventa Socio della Nostra A.S.D.</span>
+        </h1>
+        <p style="font-size: 1.15rem; color: rgba(255,255,255,0.88); line-height: 1.6; margin-bottom: 30px;">
+          Unisciti all'associazione sportiva dilettantistica con sede a Peccioli e Pontedera. Pedala in sicurezza con assicurazione FCI valida ovunque, indossa la maglia sociale esclusiva, risparmia su tutti i raduni e goditi le convenzioni speciali nelle aziende toscane.
+        </p>
+
+        <!-- Punti di Forza Rapidi -->
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <div class="rustic-pill" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+            🛡️ Assicurazione FCI / EPS 24/7
+          </div>
+          <div class="rustic-pill" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+            👕 Maglia Sociale Made in Tuscany
+          </div>
+          <div class="rustic-pill" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+            🎟️ -20% su Tutti gli Eventi
+          </div>
+          <div class="rustic-pill" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+            🍷 Convenzioni & Terzo Tempo
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREA TESSERAMENTO & MODULO REGISTRAZIONE -->
+    <section class="section" style="background: var(--sand-light);">
+      <div class="container" style="max-width: 960px;">
+        
+        <!-- Contenitore Modulo / Tessera Attiva (popolato da js/app.js) -->
+        <div id="asdPageMembershipContainer">
+          <!-- Renderizzato dinamicamente con piano, form o tessera attiva -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- I VANTAGGI DI PEDALARE CON NOI -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center" style="max-width: 700px; margin: 0 auto 40px;">
+          <span class="section-subtitle">Perché Diventare Socio</span>
+          <h2>I Vantaggi Esclusivi della Tessera 2026</h2>
+          <p class="section-desc">
+            Essere socio Ganza Gravel non significa solo avere un cartellino: significa far parte di una famiglia di appassionati di sterrato e buon cibo toscano.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+          <div class="pillar-card">
+            <div class="pillar-icon green">🛡️</div>
+            <h3 class="pillar-title">Assicurazione Completa</h3>
+            <p class="pillar-desc">
+              Copertura infortuni e responsabilità civile verso terzi (RCT) valida 365 giorni all'anno, sia durante le nostre uscite sociali che durante i tuoi allenamenti solitari.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon red">🎟️</div>
+            <h3 class="pillar-title">Sconti su Tutti i Raduni</h3>
+            <p class="pillar-desc">
+              Tariffa ridotta esclusiva del 20% su tutti gli eventi in programma: Foliage Gravel, Tartufo Ride, Notturna estiva e accesso prioritario alle iscrizioni del cicloraduno di Peccioli.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon orange">👕</div>
+            <h3 class="pillar-title">Maglia Ufficiale A.S.D.</h3>
+            <p class="pillar-desc">
+              Inclusa nei piani FCI e Oro: capo tecnico traspirante con zip integrale e tre tasche posteriori, con la grafica originale e inconfondibile disegnata a Pontedera.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon yellow">🍷</div>
+            <h3 class="pillar-title">Convenzioni sul Territorio</h3>
+            <p class="pillar-desc">
+              Sconti dedicati in 6 aziende partner: officine bici, cantine del Chianti Pisano, botteghe artigiane e agriturismi selezionati per il tuo dopo-gara.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SUL TESSERAMENTO -->
+    <section class="section" style="background: var(--sand-light);">
+      <div class="container" style="max-width: 800px;">
+        <div class="section-header text-center" style="margin-bottom: 36px;">
+          <span class="section-subtitle">Domande Frequenti</span>
+          <h2>Tutto Quello che C'è da Sapere</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Serve il certificato medico per iscriversi?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Per il tesseramento <strong>Ciclosportivo FCI</strong> è obbligatorio il certificato medico per attività sportiva non agonistica (con elettrocardiogramma) oppure il certificato agonistico B1 ciclismo. Per il piano <strong>Social & Explorer</strong> è sufficiente il certificato medico di buona salute.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Quando scade la tessera associativa?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Tutti i tesseramenti sono validi fino al <strong>31 Dicembre 2026</strong>. La copertura assicurativa decorre dal momento dell'accettazione della domanda e rilascio del numero di tessera.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Come e dove ricevo la maglia sociale e i gadget?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>I gadget e la maglia possono essere ritirati di persona presso la nostra sede o in occasione della prima uscita sociale del sabato. In alternativa, effettuiamo la spedizione a domicilio in tutta Italia.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Posso partecipare alle uscite anche con bici Gravel elettrica (E-Gravel)?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Assolutamente sì! Lo spirito di Ganza Gravel è inclusivo e non competitivo: le e-gravel e hardtail MTB sono sempre benvenute a tutte le uscite e raduni.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOX DATI ASD & TRASPARENZA -->
+    <section class="section">
+      <div class="container" style="max-width: 880px;">
+        <div style="background: var(--white); border-radius: var(--radius-md); padding: 36px; border: 1px solid var(--sand-border); box-shadow: var(--shadow-sm); text-align: center;">
+          <h3 style="margin-bottom: 8px;">A.S.D. Ganza Gravel</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+            Associazione Sportiva Dilettantistica affiliata F.C.I. (Federazione Ciclistica Italiana) e iscritta al Registro Nazionale delle Attività Sportive Dilettantistiche (CONI).
+          </p>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-main); margin-bottom: 20px;">
+            <span>📍 Sede Operativa: <strong>Peccioli / Pontedera (PI)</strong></span>
+            <span>📑 C.F. / P.IVA: <strong>90054810502</strong></span>
+            <span>✉️ PEC: <strong>ganzagravel@pec.it</strong></span>
+          </div>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="chi-siamo.html" class="btn btn-outline btn-sm">Chi Siamo & Consiglio Direttivo</a>
+            <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener" class="btn btn-accent btn-sm">💬 Chatta con il Direttivo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Globale -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="brand-logo" style="color: var(--white); margin-bottom: 16px;">
+            <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+            <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+          </a>
+          <p class="footer-bio">
+            A.S.D. Ganza Gravel &bull; Peccioli (Pisa), Toscana.<br>
+            Il cicloraduno più ganzo della Toscana, tracce GPX verificate e tesseramento ufficiale.
+          </p>
+          <div class="social-links" style="display:flex; gap:10px; margin-top:14px;">
+            <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/></svg>
+            </a>
+            <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigazione</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eventi.html">Tutti gli Eventi</a></li>
+            <li><a href="travel.html">Ganza Travel</a></li>
+            <li><a href="convenzioni.html">Convenzioni</a></li>
+            <li><a href="percorsi.html">Tracce GPX & Mappe</a></li>
+            <li><a href="gallery.html">Gallery Foto & Video</a></li>
+            <li><a href="store.html">Ganza Store</a></li>
+            <li><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><a href="iscriviti.html">Iscriviti ASD</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">ASD & Tesseramento</h4>
+          <ul class="footer-links">
+            <li><a href="iscriviti.html">Diventa Socio A.S.D. Ganza Gravel</a></li>
+            <li><a href="chi-siamo.html#contatti">Contatti & Direttivo</a></li>
+            <li><a href="chi-siamo.html#statuto">Statuto Sociale</a></li>
+            <li><a href="profilo.html">Area Riservata Soci</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Contatti ASD</h4>
+          <p class="footer-contact-item">📍 Peccioli (PI), 56037 Toscana</p>
+          <p class="footer-contact-item">📧 info@ganzagravel.it</p>
+          <p class="footer-contact-item">💬 WhatsApp: 351 5996770</p>
+          <p class="footer-contact-item">C.F. / P.IVA: 90054810502</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 A.S.D. GANZA GRAVEL - Tutti i diritti riservati. Fatto con passione e polvere toscana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/gpx-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/trails.js"></script>
+</body>
+</html>

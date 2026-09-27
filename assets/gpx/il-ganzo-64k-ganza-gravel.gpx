@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>7° Ganza Gravel - Il Ganzo (Medio)</name>
+    <desc>Il percorso medio ufficiale del Cicloraduno 2026. Pensato per chi vuole assaporare il meglio della Valdera senza pendenze proibitive. Si pedala tra le dolci creste argillose, toccando il celebre borgo colorato di Ghizzano (con le opere d'arte di David Tremlett) e le strade bianche di Fabbrica. 2 ristori tipici toscani lungo il tracciato con schiacciata, pecorino e vino locale.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.814Z</time>
+  </metadata>
+  <wpt lat="43.5486" lon="10.7208">
+    <name>🏁 Partenza Peccioli (Km 0)</name>
+    <desc>Piazza del Popolo con segreteria e caffè</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.535" lon="10.738">
+    <name>🎨 Ghizzano & Opere Tremlett (Km 18)</name>
+    <desc>Sosta fotografica tra le case d'autore</desc>
+    <sym>cultura</sym>
+  </wpt>
+  <wpt lat="43.521" lon="10.765">
+    <name>🍷 Ristoro 1: Podere La Chiesa (Km 34)</name>
+    <desc>Vino biologico, crostini e pecorino toscano</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <wpt lat="43.504" lon="10.749">
+    <name>💧 Fontanella di Fabbrica (Km 48)</name>
+    <desc>Punto idrico fresco nel centro storico</desc>
+    <sym>acqua</sym>
+  </wpt>
+  <wpt lat="43.488" lon="10.723">
+    <name>🍝 Arrivo & Pasta Party (Km 64)</name>
+    <desc>Docce calde, musica e terzo tempo ganzo</desc>
+    <sym>arrivo</sym>
+  </wpt>
+  <trk>
+    <name>7° Ganza Gravel - Il Ganzo (Medio)</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.5486" lon="10.7208">
+        <ele>140</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.535" lon="10.738">
+        <ele>210</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.521" lon="10.765">
+        <ele>95</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.504" lon="10.749">
+        <ele>245</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.488" lon="10.723">
+        <ele>160</ele>
+        <name>Punto 5</name>
+      </trkpt>
+      <trkpt lat="43.512" lon="10.698">
+        <ele>320</ele>
+        <name>Punto 6</name>
+      </trkpt>
+      <trkpt lat="43.538" lon="10.702">
+        <ele>180</ele>
+        <name>Punto 7</name>
+      </trkpt>
+      <trkpt lat="43.5486" lon="10.7208">
+        <ele>140</ele>
+        <name>Punto 8</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

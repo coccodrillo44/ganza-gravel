@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convenzioni & Eventi Partner | Ganza Gravel</title>
+  <meta name="description" content="Scopri le aziende convenzionate con Ganza Gravel in provincia di Pisa: cantine, birrifici artigianali, terme, salumifici e bike shop con sconti e pedalate dedicate.">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="convenzioni">
+
+  <!-- Floating Social Dock a Sinistra in Sovraimpressione (Stile Ghiaia Explorers) -->
+  <aside class="floating-social-dock" aria-label="Social Ganza Gravel">
+    <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn instagram" aria-label="Instagram" title="Seguici su Instagram (@ganzagravel)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="dock-tooltip">Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn facebook" aria-label="Facebook" title="Pagina Facebook Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      <span class="dock-tooltip">Facebook</span>
+    </a>
+    <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="dock-social-btn strava" aria-label="Strava Club" title="Strava Club Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+      </svg>
+      <span class="dock-tooltip">Strava</span>
+    </a>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="dock-social-btn whatsapp" aria-label="WhatsApp Community" title="Chatta con noi su WhatsApp (351 5996770)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span class="dock-tooltip">WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+        <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="eventi.html" class="nav-link">Eventi</a>
+        <a href="travel.html" class="nav-link">Ganza Travel</a>
+        <a href="convenzioni.html" class="nav-link active">Convenzioni</a>
+        <a href="percorsi.html" class="nav-link">Mappe & GPX</a>
+        <a href="store.html" class="nav-link">Ganza Store</a>
+        <a href="chi-siamo.html" class="nav-link">Chi Siamo</a>
+        <a href="iscriviti.html" class="nav-link">Iscriviti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="account-btn" id="accountHeaderBtn" onclick="handleAccountBtnClick()" aria-label="Area Personale" title="Area Personale">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="account-dot" id="accountDot"></span>
+        </button>
+
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="Carrello">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.3rem;">GANZA<span style="color:var(--accent);">PARTNER</span></span>
+      <button class="close-drawer">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="profilo.html" id="mobileAccountLink">👤 Il Mio Profilo / Accedi</a>
+      <a href="index.html">Home</a>
+      <a href="eventi.html">Tutti gli Eventi</a>
+      <a href="travel.html">Ganza Travel</a>
+      <a href="convenzioni.html" class="active">Convenzioni</a>
+      <a href="percorsi.html">Percorsi & Tracce GPX</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Ganza Store</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="iscriviti.html">Iscriviti</a>
+      </nav>
+
+    <!-- Social Bar nel Mobile Drawer -->
+    <div class="drawer-socials">
+      <span class="drawer-social-label">Seguici sui Social:</span>
+      <div class="drawer-social-icons">
+        <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+          </svg>
+        </a>
+        <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4?text=Ciao%20Ganza%20Gravel!%20Vorrei%20proporre%20una%20convenzione%20aziendale" target="_blank" rel="noopener" class="btn btn-accent btn-lg" style="width: 100%; margin-top: auto;">
+      Diventa Partner Locale
+    </a>
+  </div>
+
+  <main>
+    <!-- HERO SEZIONE CONVENZIONI -->
+    <section class="hero-home" style="min-height: 52vh; background: linear-gradient(135deg, rgba(34, 56, 43, 0.88) 0%, rgba(26, 31, 28, 0.85) 100%), url('https://images.unsplash.com/photo-1543832923-44667a44c804?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-meta">
+            <span class="edition">NETWORK AZIENDE PISANE</span>
+            <span>•</span>
+            <span>CONVENZIONI & BENEFIT SOCI</span>
+          </div>
+
+          <h1 class="hero-title">
+            Convenzioni <br>
+            <span class="highlight">& Eventi Dedicati.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Crediamo nella forza del territorio toscano. Ganza Gravel fa rete con cantine biologiche, birrifici artigianali, terme storiche, salumifici e officine ciclistiche della provincia di Pisa. Per ogni azienda partner trovi <strong>sconti esclusivi riservati ai nostri ciclisti</strong> e un <strong>evento speciale organizzato sul campo</strong>.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#partner-list" class="btn btn-accent btn-lg">
+              🏢 Esplora le 6 Convenzioni
+            </a>
+            <a href="#diventa-partner" class="btn btn-outline-white btn-lg">
+              🤝 Proponi la Tua Azienda
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICHE PARTNER -->
+    <section class="section" style="padding: 30px 0; background: var(--sand-light); border-bottom: 1px solid var(--sand-border);">
+      <div class="container">
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--primary);">6</div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Eccellenze del Pisano</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--accent);">Fino a -25%</div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Sconti per i Soci</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--forest);">6 Eventi</div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Pedalate & Degustazioni Dedicate</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--dark);">100% Locale</div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Valdera, Volterra & Chianti Pisano</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRIGLIA AZIENDE CONVENZIONATE CON LOGO ED EVENTO CORRELATO -->
+    <section class="section" id="partner-list">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Il Nostro Network</span>
+          <h2>Aziende Partner & Le Loro Gare ed Eventi</h2>
+          <p class="section-desc">
+            Mostra la tua tessera associativa o la conferma d'iscrizione a qualsiasi evento Ganza Gravel per accedere ai benefit. Clicca sugli eventi abbinati per scoprire i dettagli del tracciato e iscriverti!
+          </p>
+        </div>
+
+        <div class="partners-grid">
+
+          <!-- 1. PODERE LA CHIESA -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Podere La Chiesa -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#7B1C30"/>
+                  <path d="M50 18 L68 32 L68 76 L32 76 L32 32 Z" stroke="#D97724" stroke-width="4" fill="none"/>
+                  <circle cx="50" cy="52" r="14" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+                  <path d="M46 52 L50 44 L54 52 L50 60 Z" fill="#D97724"/>
+                  <path d="M24 84 Q50 78 76 84" stroke="#F7F3EC" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Podere La Chiesa</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Terricciola (PI)</span>
+                  <span class="partner-badge">Vini Biologici & Cantina d'Arte</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Una delle cantine vitivinicole più spettacolari della Toscana, famosa per il suo edificio a forma di anfiteatro naturale e per i vini biologici Chianti delle Colline Pisane DOCG e Terre di Pisa.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">Sconto 15% su tutte le degustazioni guidate in cantina e sull'acquisto di casse di vino da asporto o spedite a casa.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">20 GIU 2026</span>
+                </div>
+                <h4 class="partner-event-title">Wine & Gravel Trophy - Terricciola Harvest Ride</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>48 km</strong></span>
+                  <span>⛰️ <strong>+620m</strong></span>
+                  <span>🍇 Degustazione Inclusa</span>
+                </div>
+                <p class="partner-event-desc">
+                  Suggestiva pedalata tra i vigneti di Terricciola con arrivo trionfale all'anfiteatro di Podere La Chiesa: calice di benvenuto, tagliere toscano e visita alla barricaia.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('chianti-pisano-vigneti')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. BIRRIFICIO ARTIGIANALE VALDERA HOP -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Birrificio Valdera -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#22382B"/>
+                  <path d="M50 20 C65 20 74 34 74 48 C74 65 50 82 50 82 C50 82 26 65 26 48 C26 34 35 20 50 20 Z" fill="#D97724"/>
+                  <path d="M50 28 L50 72 M38 42 L62 42 M40 56 L60 56" stroke="#22382B" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="50" cy="18" r="4" fill="#F7F3EC"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Birrificio Valdera Hop</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Pontedera (PI)</span>
+                  <span class="partner-badge" style="background:rgba(217,119,36,0.15); color:var(--accent);">Birra Artigianale Indipendente</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Microbirrificio artigianale toscano a filiera corta. Produce IPA, Blanche e bionde non pastorizzate con orzo coltivato nella pianura dell'Era. Fornitore ufficiale del Terzo Tempo di Ganza Gravel.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">1 pinta di birra artigianale omaggio con l'ordinazione di un tagliere/burger e sconto 20% sulle confezioni da 6 bottiglie da asporto.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">04 LUG 2026</span>
+                </div>
+                <h4 class="partner-event-title">Ganza Hop Ride & Craft Beer Fest</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>52 km</strong></span>
+                  <span>⛰️ <strong>+480m</strong></span>
+                  <span>🍺 4 Birre Degustazione</span>
+                </div>
+                <p class="partner-event-desc">
+                  Giro ad anello veloce tra gli argini del fiume Era e le colline di Palaia, con sosta tecnica agli impianti di cotta del birrificio e maxi barbecue di chiusura.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('calanchi-balze-epic')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. TERME DI CASCIANA BALNEUM -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Terme di Casciana -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#1A1F1C"/>
+                  <path d="M20 65 Q35 50 50 65 T80 65" stroke="#38BDF8" stroke-width="5" fill="none" stroke-linecap="round"/>
+                  <path d="M25 50 Q40 38 50 50 T75 50" stroke="#7DD3FC" stroke-width="4" fill="none" stroke-linecap="round"/>
+                  <path d="M35 35 Q45 28 50 35 T65 35" stroke="#BAE6FD" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <circle cx="50" cy="20" r="5" fill="#D97724"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Terme di Casciana</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Casciana Terme Lari (PI)</span>
+                  <span class="partner-badge" style="background:rgba(56,189,248,0.12); color:#0284C7;">Terme & Recupero Sportivo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Storico stabilimento termale di origini romane con acqua sulfurea a 36°C costante. Punto di riferimento toscano per la balneoterapia, il recupero decontratturante e il relax post-pedalata.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">Sconto 25% su tutti gli ingressi alla piscina balneoterapica termale esterna e tariffa agevolata su massaggi sportivi per ciclisti.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">24 MAG 2026</span>
+                </div>
+                <h4 class="partner-event-title">Thermal Gravel & Spa Recovery Ride</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>58 km</strong></span>
+                  <span>⛰️ <strong>+750m</strong></span>
+                  <span>♨️ Ingresso Terme Incluso</span>
+                </div>
+                <p class="partner-event-desc">
+                  Pedalata mattutina tra le colline di Lari e Chianni con fondo misto ghiaia/asfalto, seguita da un pomeriggio di rigenerazione muscolare nelle calde acque termali di Casciana.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('teatro-del-silenzio')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. SALUMIFICIO & NORCINERIA VAL DI CECINA -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Norcineria -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#BF6214"/>
+                  <ellipse cx="50" cy="50" rx="30" ry="22" fill="#7B1C30"/>
+                  <circle cx="36" cy="46" r="3" fill="#FFFFFF"/>
+                  <path d="M22 52 Q28 60 34 54" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M72 44 Q80 40 76 56" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M40 70 L42 78 M60 70 L58 78" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Norcineria Val di Cecina</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Volterra (PI)</span>
+                  <span class="partner-badge" style="background:rgba(191,98,20,0.12); color:#BF6214;">Cinta Senese & Pecorini D.O.P.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Bottega e laboratorio artigianale a conduzione familiare. Lavora carni selezionate di Cinta Senese e stagiona i celebri pecorini delle Balze di Volterra nelle antiche grotte tufacee.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">Omaggio di 1 trancio di pecorino stagionato con spesa minima di 30€ e sconto 10% su tutti i salumi tipici sottovuoto da viaggio.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">13 SET 2026</span>
+                </div>
+                <h4 class="partner-event-title">Schiacciata & Cinta Senese Social Tour</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>55 km</strong></span>
+                  <span>⛰️ <strong>+920m</strong></span>
+                  <span>🥖 Maxi Buffet Norcino</span>
+                </div>
+                <p class="partner-event-desc">
+                  Tour sterrato panoramico tra le creste che da Lajatico salgono a Volterra, con sosta gourmet all'arrivo a base di schiacciata calda sfornata sul posto e finocchiona tagliata a mano.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('volterra-etrusca-wild')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. CICLI VALDERA PRO BIKE SHOP -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Cicli Valdera -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#500F1E"/>
+                  <circle cx="50" cy="50" r="28" stroke="#D97724" stroke-width="4" stroke-dasharray="8 6"/>
+                  <circle cx="50" cy="50" r="14" fill="#FFFFFF"/>
+                  <circle cx="50" cy="50" r="6" fill="#7B1C30"/>
+                  <path d="M50 14 L50 24 M50 76 L50 86 M14 50 L24 50 M76 50 L86 50" stroke="#D97724" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Cicli Valdera Pro Bike</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Pontedera / Peccioli (PI)</span>
+                  <span class="partner-badge" style="background:rgba(123,28,48,0.12); color:var(--primary);">Officina & Test Center Gravel</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Centro tecnico specializzato nel mondo gravel e bikepacking. Assistenza meccanica certificata Shimano/SRAM, rivendita copertoni, ricambi tubeless e flotta noleggio ufficiale di Ganza Travel.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">Check-up meccanico e regolazione cambio gratuiti prima delle manifestazioni + sconto 15% su borse da bikepacking e accessori gravel.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">27 SET 2026</span>
+                </div>
+                <h4 class="partner-event-title">Gravel Demo Day & Tubeless Masterclass</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>Test Track 15km</strong></span>
+                  <span>🛠️ Workshop Pratico</span>
+                  <span>🚲 Test Bici Gratuito</span>
+                </div>
+                <p class="partner-event-desc">
+                  Una giornata per provare su sterrato le novità bici 2027, confrontare sezioni di pneumatici e partecipare alla masterclass pratica sulla riparazione forature e manutenzione trasmissione.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('il-ganzo-64k')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. AGRITURISMO POGGIO DEI CIPRESSI -->
+          <div class="partner-card">
+            <div class="partner-card-header">
+              <div class="partner-logo-box">
+                <!-- SVG Logo Agriturismo -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="100" rx="12" fill="#22382B"/>
+                  <!-- Colline e casale -->
+                  <path d="M15 80 Q50 62 85 80" stroke="#D97724" stroke-width="4" fill="none"/>
+                  <rect x="36" y="48" width="22" height="18" fill="#F7F3EC"/>
+                  <polygon points="33,48 47,34 61,48" fill="#7B1C30"/>
+                  <!-- Due cipressi slanciati -->
+                  <path d="M68 36 C74 44 74 66 68 70 C62 66 62 44 68 36 Z" fill="#345841"/>
+                  <line x1="68" y1="70" x2="68" y2="76" stroke="#D97724" stroke-width="3"/>
+                  <path d="M26 44 C31 50 31 68 26 72 C21 68 21 50 26 44 Z" fill="#345841"/>
+                </svg>
+              </div>
+              <div class="partner-info-box">
+                <h3>Poggio dei Cipressi</h3>
+                <div class="partner-meta-row">
+                  <span>📍 Peccioli (PI)</span>
+                  <span class="partner-badge" style="background:rgba(34,56,43,0.12); color:var(--forest);">Bike Resort & Ospitalità Rurale</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-card-body">
+              <p class="partner-desc">
+                Autentica tenuta toscana con casali in pietra, piscina a sfioro sui calanchi, bike room chiusa con videosorveglianza, colonnine di ricarica per e-bike e lavaggio biciclette con idropulitrice.
+              </p>
+
+              <div class="partner-perk-box">
+                <div class="partner-perk-title">🎁 Convenzione Soci Ganza:</div>
+                <div class="partner-perk-text">Sconto 15% sul soggiorno minimo di 2 notti con colazione per ciclisti inclusa e lavaggio gratuito dell'abbigliamento sportivo serale.</div>
+              </div>
+
+              <!-- Evento Dedicato -->
+              <div class="partner-event-box">
+                <div class="partner-event-header">
+                  <span class="partner-event-tag">Evento Dedicato all'Azienda</span>
+                  <span class="partner-event-date">19 SET 2026</span>
+                </div>
+                <h4 class="partner-event-title">Bikepacking Camp & Sunset BBQ (Vigilia Raduno)</h4>
+                <div class="partner-event-specs">
+                  <span>📏 <strong>38 km</strong></span>
+                  <span>⛰️ <strong>+460m</strong></span>
+                  <span>🥩 Grigliata & Notte Sotto le Stelle</span>
+                </div>
+                <p class="partner-event-desc">
+                  L'evento di riscaldamento del sabato pre-raduno ufficiale: pedalata pomeridiana tra i borghi d'arte, clinic su borse e setup da viaggio e barbecue toscano a bordo piscina al tramonto.
+                </p>
+                <div style="display:flex; gap:8px;">
+                  <a href="travel.html#prenota" class="btn btn-accent btn-sm" style="flex:1;">Partecipa all'Evento</a>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('il-ganzo-64k')">Percorso</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION PER NUOVE AZIENDE -->
+    <section class="section" id="diventa-partner" style="background: var(--sand-light);">
+      <div class="container" style="max-width: 820px; text-align: center;">
+        <span class="section-subtitle">Fai Rete con Ganza Gravel</span>
+        <h2>Hai un'Attività in Provincia di Pisa?</h2>
+        <p class="section-desc" style="margin-bottom: 30px;">
+          Sei un agriturismo, una cantina, un birrificio, un ristorante o un'officina? Entra a far parte del circuito ufficiale Ganza Gravel: promuoveremo la tua attività a centinaia di ciclisti e cicloturisti italiani e stranieri.
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4?text=Ciao%20Ganza%20Gravel!%20Gestisco%20un'attivit%C3%A0%20nel%20Pisano%20e%20vorrei%20proporre%20una%20convenzione" target="_blank" rel="noopener" class="btn btn-accent btn-lg" style="display:inline-flex; align-items:center; gap:8px;">
+            <span>💬 Scrivici su WhatsApp (+39 351 5996770)</span>
+          </a>
+          <a href="chi-siamo.html#contatti" class="btn btn-outline btn-lg">
+            Compila il Form di Contatto
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="color: var(--white); margin-bottom: 14px;">
+            GANZA<span style="color:var(--accent);">GRAVEL</span>
+          </div>
+          <p>Il grande circuito e cicloraduno su strade bianche del Pisano. Promuoviamo la cultura gravel, l'inclusività e la scoperta delle eccellenze toscane.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Network & Eventi</h4>
+          <div class="footer-links">
+            <a href="convenzioni.html">Convenzioni</a>
+            <a href="eventi.html">Calendario Eventi 2026</a>
+            <a href="travel.html">Ganza Travel</a>
+            <a href="percorsi.html">Mappe & Tracce GPX</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contatti & Store</h4>
+          <div class="footer-links">
+            <a href="store.html">Ganza Store</a>
+            <a href="chi-siamo.html">Sergio & Daniele (Staff)</a>
+            <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank">WhatsApp Assistenza</a>
+            <a href="mailto:info@ganzagravel.it">info@ganzagravel.it</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dati Aziendali & Legali</h4>
+          <div class="legal-box">
+            <strong>Ganza Gravel A.S.D.</strong><br>
+            Sede: Peccioli / Pontedera (PI)<br>
+            <strong>P.IVA:</strong> IT02384920501<br>
+            <strong>C.F.:</strong> 90054810502<br>
+            <strong>PEC:</strong> ganzagravel@pec.it
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Ganza Gravel - Tutti i diritti riservati.</div>
+        <div>Toscana, Italia</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DETTAGLIO PERCORSO CON FOTO, MAPPA E GPX -->
+  <div class="modal-overlay" id="trailDetailModal">
+    <div class="modal-container modal-trail-detail">
+      <div class="modal-header">
+        <div style="flex-grow: 1;">
+          <span id="detailTrailBadge" class="badge badge-primary" style="margin-bottom: 6px;">Percorso</span>
+          <h3 id="detailTrailTitle" style="font-size: 1.5rem; color: var(--dark); line-height: 1.2;">Nome Percorso</h3>
+          <div id="detailTrailLoc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"></div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('trailDetailModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="trail-gallery-box">
+          <div class="trail-main-photo-wrap">
+            <img id="detailMainPhoto" src="" alt="Foto Percorso">
+            <div class="trail-photo-caption" id="detailMainCaption"></div>
+          </div>
+          <div class="trail-thumbs-strip" id="detailThumbsContainer"></div>
+        </div>
+        <div class="telemetry-grid" id="detailTelemetryGrid"></div>
+        <div id="detailSurfaceBar"></div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 8px;">Descrizione dell'Itinerario</h4>
+          <p id="detailTrailDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;"></p>
+          <h5 style="margin: 16px 0 10px 0; text-transform: uppercase; font-size: 0.9rem; color: var(--accent);">Punti Salienti del Tracciato</h5>
+          <ul class="highlights-list" id="detailTrailHighlights"></ul>
+        </div>
+        <div style="margin-bottom: 26px; background: var(--sand-light); border: 1px solid var(--sand-border); border-radius: var(--radius-sm); padding: 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+            <h4 style="font-size: 1rem; margin-bottom: 0;">Profilo Altimetrico Interattivo</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Quota in metri sul livello del mare</span>
+          </div>
+          <canvas id="detailElevationChart" height="90" style="width: 100%; height: 90px;"></canvas>
+        </div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 12px;">Punti di Interesse & Ristori sul Percorso</h4>
+          <div class="pois-grid" id="detailPoisContainer"></div>
+        </div>
+        <div id="detailEquipmentTips"></div>
+      </div>
+
+      <div class="detail-modal-footer">
+        <a id="detailGoogleMapsBtn" href="#" target="_blank" class="btn btn-outline btn-sm">
+          🧭 Naviga al Ritrovo (Google Maps)
+        </a>
+        <button type="button" class="btn btn-accent btn-lg" id="detailDownloadGpxBtn">
+          ⬇️ Scarica Traccia GPX Ufficiale
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Il Tuo Carrello (<span class="cart-badge" style="position:static; display:inline-flex;">0</span>)</h3>
+      <button class="close-drawer" onclick="closeCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items-container" id="cartItemsList"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row"><span>Totale:</span><span id="cartTotal">€0.00</span></div>
+      <a href="store.html" class="btn btn-primary btn-lg" style="width: 100%;">Vai allo Store</a>
+    </div>
+  </div>
+
+  <!-- MODAL AUTENTICAZIONE / LOGIN -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <span class="rustic-sticker" style="font-size:1.15rem; color:var(--primary); display:block; margin-bottom:2px;">O bischero, bentornato!</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 2px;">Area Personale Ganza Crew</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('authModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Box Credenziali Fittizie Demo in Evidenza -->
+        <div class="demo-box">
+          <div class="demo-box-header">
+            <span class="demo-title">⚡ Credenziali Fittizie Demo:</span>
+            <span class="badge badge-accent" style="font-size:0.65rem;">ACCESSO TEST</span>
+          </div>
+          <div class="demo-credentials-grid">
+            <div class="demo-cred-item">
+              <strong>Email:</strong>
+              <code>mario.ganzo@email.it</code>
+            </div>
+            <div class="demo-cred-item">
+              <strong>Password:</strong>
+              <code>Ganza2026!</code>
+            </div>
+          </div>
+          <button type="button" class="btn-fill-demo" onclick="fillDemoCredentials()">
+            👉 Clicca qui per compilare in automatico le credenziali demo
+          </button>
+        </div>
+
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="authEmail">Indirizzo Email</label>
+            <input type="email" id="authEmail" required placeholder="mario.ganzo@email.it" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="authPassword">Password</label>
+            <input type="password" id="authPassword" required placeholder="••••••••" class="form-input">
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.85rem;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" checked> Ricordami
+            </label>
+            <a href="#" onclick="showToast('Password reimpostata con successo per l\'utente demo!', 'accent'); return false;" style="color:var(--accent); font-weight:600;">Password persa?</a>
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            🚴 Entra nel Tuo Profilo &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/gpx-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/trails.js"></script>
+</body>
+</html>

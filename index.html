@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganza Gravel | Cicloraduno in Toscana, Tracce GPX & Abbigliamento Gravel</title>
+  <meta name="description" content="Sito Ufficiale Ganza Gravel: il 1° Cicloraduno Gravel del Pisano a Peccioli, il portale di tracce GPX della Valdera e lo shop di completini Made in Toscana.">
+
+  <!-- OpenGraph / Social -->
+  <meta property="og:title" content="Ganza Gravel | Il Raduno Gravel più Ganzo della Toscana">
+  <meta property="og:description" content="Domenica 20 Settembre 2026 a Peccioli (PI). Percorsi 64km e 92km, tracce GPX gratuite e Ganza Store.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ganzagravel.it/">
+
+  <!-- Schema.org JSON-LD Structured Data per Evento e Organizzazione -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SportsEvent",
+        "name": "7° Ganza Gravel - Cicloraduno del Pisano",
+        "startDate": "2026-09-20T08:30:00+02:00",
+        "endDate": "2026-09-20T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Piazza del Popolo / Centro Storico Peccioli",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Piazza del Popolo",
+            "addressLocality": "Peccioli",
+            "postalCode": "56037",
+            "addressRegion": "Pisa",
+            "addressCountry": "IT"
+          }
+        },
+        "description": "Cicloraduno non competitivo su strade bianche della Valdera e del Volterrano con due percorsi: 64km e 92km.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://join.endu.net/entry?edition=107516",
+          "price": "20.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-01-01"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "A.S.D. Ganza Gravel",
+          "url": "https://www.ganzagravel.it"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "Ganza Gravel",
+        "url": "https://www.ganzagravel.it",
+        "logo": "https://www.ganzagravel.it/wp-content/uploads/2021/06/Ganza-Gravel-logo.png",
+        "founders": ["Sergio Di Ponzio", "Daniele Pelorossi"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Leaflet CSS per le mappe -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- Fogli di Stile -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Floating Social Dock a Sinistra in Sovraimpressione (Stile Ghiaia Explorers) -->
+  <aside class="floating-social-dock" aria-label="Social Ganza Gravel">
+    <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn instagram" aria-label="Instagram" title="Seguici su Instagram (@ganzagravel)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="dock-tooltip">Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn facebook" aria-label="Facebook" title="Pagina Facebook Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      <span class="dock-tooltip">Facebook</span>
+    </a>
+    <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="dock-social-btn strava" aria-label="Strava Club" title="Strava Club Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+      </svg>
+      <span class="dock-tooltip">Strava</span>
+    </a>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="dock-social-btn whatsapp" aria-label="WhatsApp Community" title="Chatta con noi su WhatsApp (351 5996770)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span class="dock-tooltip">WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Header di Navigazione Principale -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+        <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="eventi.html" class="nav-link">Eventi</a>
+        <a href="travel.html" class="nav-link">Ganza Travel</a>
+        <a href="convenzioni.html" class="nav-link">Convenzioni</a>
+        <a href="percorsi.html" class="nav-link">Mappe & GPX</a>
+        <a href="store.html" class="nav-link">Ganza Store</a>
+        <a href="chi-siamo.html" class="nav-link">Chi Siamo</a>
+        <a href="iscriviti.html" class="nav-link">Iscriviti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="account-btn" id="accountHeaderBtn" onclick="handleAccountBtnClick()" aria-label="Area Personale" title="Area Personale">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="account-dot" id="accountDot"></span>
+        </button>
+
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="Carrello">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.3rem;">
+        GANZA<span style="color:var(--accent);">GRAVEL</span>
+      </span>
+      <button class="close-drawer" aria-label="Chiudi">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="profilo.html" id="mobileAccountLink">👤 Il Mio Profilo / Accedi</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="eventi.html">Eventi & Raduni</a>
+      <a href="travel.html">Ganza Travel</a>
+      <a href="convenzioni.html">Convenzioni</a>
+      <a href="percorsi.html">Percorsi & Tracce GPX</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Ganza Store</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="iscriviti.html">Iscriviti</a>
+      </nav>
+
+    <!-- Social Bar nel Mobile Drawer -->
+    <div class="drawer-socials">
+      <span class="drawer-social-label">Seguici sui Social:</span>
+      <div class="drawer-social-icons">
+        <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+          </svg>
+        </a>
+        <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO COVER FOTO -->
+    <section class="hero-home">
+      <!-- Scritta GANZA GRAVEL in basso a destra -->
+      <div class="hero-branding">
+        <div class="hero-branding-text">GANZA<span>GRAVEL</span></div>
+        <div class="hero-branding-tagline">Strade Bianche &middot; Toscana</div>
+      </div>
+    </section>
+
+<!-- I PILASTRI DI GANZA GRAVEL -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+                <div class="pillars-grid">
+
+          <!-- Pilastro 1: Gallery -->
+          <a href="gallery.html" class="pillar-card highlight-gallery-card pillar-card-link">
+            <div class="pillar-icon yellow">📷</div>
+            <h3 class="pillar-title">Gallery</h3>
+            <p class="pillar-desc">
+              Gli scatti e i video più pazzi realizzati dai ciclisti: polvere sulle strade bianche, discese nei boschi, selfie coi giganti di Peccioli e brindisi col Chianti.
+            </p>
+            <span class="pillar-link">Guarda Foto &amp; Video &rarr;</span>
+          </a>
+
+          <!-- Pilastro 2: Gli Eventi -->
+          <a href="eventi.html" class="pillar-card pillar-card-link">
+            <div class="pillar-icon red">🏆</div>
+            <h3 class="pillar-title">Eventi &amp; Raduni</h3>
+            <p class="pillar-desc">
+              Tutte le uscite sociali della stagione: Foliage Gravel a Toiano, Tartufo Tour a San Miniato, Winter Solstice sui Monti Pisani e le tracce GPX permanenti del grande raduno di Peccioli.
+            </p>
+            <span class="pillar-link">Tutti gli Eventi in Programma &rarr;</span>
+          </a>
+
+          <!-- Pilastro 3: Ganza Travel -->
+          <a href="travel.html" class="pillar-card pillar-card-link">
+            <div class="pillar-icon green">🏕️</div>
+            <h3 class="pillar-title">Ganza Travel</h3>
+            <p class="pillar-desc">
+              La tua agenzia per vivere la Toscana su due ruote: unisciti alle uscite di gruppo settimanali, prenota weekend bikepacking o noleggia una gravel con consegna in hotel.
+            </p>
+            <span class="pillar-link">Scopri Ganza Travel &rarr;</span>
+          </a>
+
+          <!-- Pilastro 4: Percorsi GPX -->
+          <a href="percorsi.html" class="pillar-card pillar-card-link">
+            <div class="pillar-icon orange">🗺️</div>
+            <h3 class="pillar-title">Percorsi &amp; Tracce GPX</h3>
+            <p class="pillar-desc">
+              Tutte le tracce GPX verificate e gratuite della Valdera e del Volterrano con altimetrie, percentuali di sterrato e coordinate GPS di partenza.
+            </p>
+            <span class="pillar-link">Scarica i GPX &rarr;</span>
+          </a>
+
+          <!-- Pilastro 5: Ganza Store -->
+          <a href="store.html" class="pillar-card pillar-card-link">
+            <div class="pillar-icon green">👕</div>
+            <h3 class="pillar-title">Ganza Store</h3>
+            <p class="pillar-desc">
+              Completini gravel tecnici disegnati in Toscana: fondelli multi-densità per lunghe distanze, maglie grafiche uniche (POP, Tattoo, Sunflower) e gilet Windtex.
+            </p>
+            <span class="pillar-link">Visita lo Store &rarr;</span>
+          </a>
+
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ANTEPRIMA PERCORSI RADUNO 2026 (STILE GHIAIA EXPLORERS) -->
+    <section class="section" style="background: var(--sand-light);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Strade Bianche & Calanchi</span>
+          <h2 class="section-title">Le Nostre Uscite Recenti</h2>
+          <p class="section-desc">
+            Scegli il percorso più adatto al tuo allenamento. Entrambi partono dal suggestivo borgo di Peccioli e si snodano tra le colline della Valdera con ristori toscani completi.
+          </p>
+        </div>
+
+        <div class="trails-grid" id="trailsGridContainer">
+          <!-- Popolato dinamicamente da js/trails.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+          <a href="percorsi.html" class="btn btn-outline btn-lg">
+            Guarda la Mappa Interattiva Completa & Tutti i Percorsi Permanenti
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GANZA STORE - BEST SELLER IN EVIDENZA -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Stile & Performance Gravel</span>
+          <h2 class="section-title">I Completini Più Ganzi</h2>
+          <p class="section-desc">
+            Niente grafiche noiose: tessuti tecnici traspiranti, fondelli testati oltre 6 ore in sella e design 100% ideati da Sergio Di Ponzio a Pontedera.
+          </p>
+        </div>
+
+        <!-- Barra di Fiducia -->
+        <div class="store-trust-bar">
+          <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            <div class="trust-text">
+              <h5>Spedizione Gratuita</h5>
+              <p>Per tutti gli ordini superiori a 79€</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🔄</div>
+            <div class="trust-text">
+              <h5>Reso Facile 30 Giorni</h5>
+              <p>Cambio taglia rapido e senza pensieri</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🇮🇹</div>
+            <div class="trust-text">
+              <h5>100% Made in Toscana</h5>
+              <p>Design esclusivo e tessuti certificati</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">💬</div>
+            <div class="trust-text">
+              <h5>Assistenza Ciclistica</h5>
+              <p>Consigli diretti su taglie e fondelli</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Griglia Prodotti Top 4 -->
+        <div class="products-grid">
+          
+          <!-- Prodotto 1: Maglia POP -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="https://www.ganzagravel.it/wp-content/uploads/2022/09/x-provini-web2_modellini-247x296.jpg" alt="Maglia Ganza POP">
+              <span class="badge badge-accent product-badge">Best Seller</span>
+              <button type="button" class="quick-view-btn" onclick="openQuickView('maglia-ganza-pop')">Anteprima Rapida</button>
+            </div>
+            <div class="product-info">
+              <div class="product-cat">Abbigliamento Estivo</div>
+              <h3 class="product-title">Maglia Ganza POP</h3>
+              <div class="product-price-row">
+                <span class="product-price">€53.00</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addToCart('maglia-ganza-pop', 'L')">
+                Aggiungi al Carrello
+              </button>
+            </div>
+          </div>
+
+          <!-- Prodotto 2: Pantalone Gravel -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="https://www.ganzagravel.it/wp-content/uploads/2021/11/Pantalone-Estivo-Gravel-ciclismo-247x296.jpg" alt="Pantalone Ciclismo Gravel">
+              <span class="badge badge-primary product-badge">Fondello 7h</span>
+              <button type="button" class="quick-view-btn" onclick="openQuickView('pantalone-ciclismo-gravel')">Anteprima Rapida</button>
+            </div>
+            <div class="product-info">
+              <div class="product-cat">Pantaloni & Salopette</div>
+              <h3 class="product-title">Pantalone Gravel Cargo</h3>
+              <div class="product-price-row">
+                <span class="product-price">€59.00</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addToCart('pantalone-ciclismo-gravel', 'L')">
+                Aggiungi al Carrello
+              </button>
+            </div>
+          </div>
+
+          <!-- Prodotto 3: Maglia Tattoo -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="https://www.ganzagravel.it/wp-content/uploads/2022/04/maglia-ESTIVO-old-school-tattoo-3D-247x296.jpg" alt="Maglia Tattoo Old School">
+              <span class="badge badge-forest product-badge">Iconica</span>
+              <button type="button" class="quick-view-btn" onclick="openQuickView('maglia-tattoo-old-school')">Anteprima Rapida</button>
+            </div>
+            <div class="product-info">
+              <div class="product-cat">Abbigliamento Estivo</div>
+              <h3 class="product-title">Maglia Tattoo Old School</h3>
+              <div class="product-price-row">
+                <span class="product-price">€53.00</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addToCart('maglia-tattoo-old-school', 'L')">
+                Aggiungi al Carrello
+              </button>
+            </div>
+          </div>
+
+          <!-- Prodotto 4: Gilet Windtex -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="https://www.ganzagravel.it/wp-content/uploads/2021/11/gilet-ciclismo-gravel-antivento-antipioggia-247x296.jpg" alt="Gilet Windtex">
+              <span class="badge badge-accent product-badge">Antivento</span>
+              <button type="button" class="quick-view-btn" onclick="openQuickView('gilet-ganza-windtex')">Anteprima Rapida</button>
+            </div>
+            <div class="product-info">
+              <div class="product-cat">Accessori e Gilet</div>
+              <h3 class="product-title">Gilet WINDTEX Pro</h3>
+              <div class="product-price-row">
+                <span class="product-price">€69.00</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addToCart('gilet-ganza-windtex', 'L')">
+                Aggiungi al Carrello
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+          <a href="store.html" class="btn btn-accent btn-lg">
+            Scopri Tutta la Collezione nello Store
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY & IL CIRCOLINO (ISPIRAZIONE SIENA) -->
+    <section class="community-stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div>
+            <div class="stat-box-num">14.200+</div>
+            <div class="stat-box-lbl">Km di Strade Bianche Tracciati</div>
+          </div>
+          <div>
+            <div class="stat-box-num">1.450+</div>
+            <div class="stat-box-lbl">Gravellisti Partecipanti</div>
+          </div>
+          <div>
+            <div class="stat-box-num">650+</div>
+            <div class="stat-box-lbl">Litri di Vino & Birra ai Ristori</div>
+          </div>
+          <div>
+            <div class="stat-box-num">100%</div>
+            <div class="stat-box-lbl">Spirito Ganzo & Conviviale</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORYTELLING & TERRITORIO: PECCIOLI & LA VALDERA -->
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+          <div>
+            <span class="section-subtitle">Il Nostro Territorio</span>
+            <h2>Pedalare nel Cuore della Toscana Più Autentica</h2>
+            <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 20px;">
+              Ganza Gravel nasce dall'amicizia di due pontederesi DOC, <strong>Sergio Di Ponzio</strong> e <strong>Daniele Pelorossi</strong>, con un'unica missione: far scoprire le creste di tufo, le strade bianche e l'arte contemporanea diffusa di <strong>Peccioli</strong>, borgo premiato come <em>"Il Borgo dei Borghi"</em>.
+            </p>
+            <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 28px;">
+              Qui non conta chi arriva primo: conta pedalare insieme, fermarsi al ristoro a gustare un crostino con l'olio novo e godersi il panorama mozzafiato che spazia da Volterra fino al mare di Pisa.
+            </p>
+            <div style="display: flex; gap: 16px;">
+              <a href="chi-siamo.html" class="btn btn-outline">La Nostra Storia</a>
+              <a href="eventi.html#raduno-2026" class="btn btn-primary">Tutte le Info sul Raduno 2026</a>
+            </div>
+          </div>
+          <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <img src="assets/img/eventi/dji_fly_20260920_085748_0152_1789965475783_video_trim(1).jpg" alt="Colline di Peccioli e Valdera" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER LEAD MAGNET -->
+    <section class="section" style="background: var(--dark); color: var(--white);">
+      <div class="container" style="max-width: 820px; text-align: center;">
+        <span class="section-subtitle" style="color: var(--accent);">Unisciti alla Community</span>
+        <h2 style="color: var(--white); margin-bottom: 16px;">Scarica la Guida alle Strade Bianche della Valdera</h2>
+        <p style="color: rgba(255,255,255,0.75); margin-bottom: 32px; font-size: 1.1rem;">
+          Iscriviti per ricevere gratis i file GPX aggiornati, le notifiche sulle quote del cicloraduno e un <strong>coupon del 10% (GANZA10)</strong> per il tuo primo ordine nel Ganza Store.
+        </p>
+
+        <form class="newsletter-form" style="display: flex; gap: 12px; max-width: 540px; margin: 0 auto; flex-wrap: wrap;">
+          <input type="email" placeholder="Inserisci il tuo indirizzo email..." required class="form-input" style="flex: 1; min-width: 260px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+          <button type="submit" class="btn btn-accent">Iscriviti Subito</button>
+        </form>
+        <span style="font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; margin-top: 12px;">Niente spam. Puoi disiscriverti in qualunque momento con un click.</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER LEGALE COMPLETO (RISOLVE IL PROBLEMA DEL FOOTER VUOTO) -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Colonna 1: Identità -->
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="color: var(--white); margin-bottom: 14px;">
+            GANZA<span style="color:var(--accent);">GRAVEL</span>
+          </div>
+          <p>
+            Il 1° Cicloraduno Gravel del territorio pisano. Passione, paesaggi mozzafiato dell'Alta Valdera, strade bianche e completini Made in Toscana.
+          </p>
+          <div style="display: flex; gap: 14px; margin-top: 18px;">
+            <a href="https://www.facebook.com/ganzagravel" target="_blank" rel="noopener" style="color:var(--accent); font-size: 1.3rem;" aria-label="Facebook">📘</a>
+            <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener" style="color:var(--accent); font-size: 1.3rem;" aria-label="Instagram">📸</a>
+            <a href="mailto:info@ganzagravel.it" style="color:var(--accent); font-size: 1.3rem;" aria-label="Email">✉️</a>
+          </div>
+        </div>
+
+        <!-- Colonna 2: Eventi & Travel -->
+        <div class="footer-col">
+          <h4>Eventi & Travel</h4>
+          <div class="footer-links">
+            <a href="eventi.html">Tutti gli Eventi</a>
+            <a href="eventi.html#raduno-2026">7° Cicloraduno Peccioli '26</a>
+            <a href="travel.html">Ganza Travel</a>
+            <a href="travel.html#noleggio">Noleggio Gravel & E-Gravel</a>
+            <a href="percorsi.html">Tracce GPX & Mappe</a>
+          </div>
+        </div>
+
+        <!-- Colonna 3: Store & Assistenza -->
+        <div class="footer-col">
+          <h4>Ganza Store</h4>
+          <div class="footer-links">
+            <a href="store.html">Tutti i Completini</a>
+            <a href="store.html?cat=estivo">Maglie Estive</a>
+            <a href="store.html?cat=pantaloni">Pantaloni con Fondello</a>
+            <a href="store.html?cat=invernale">Gilet & Antivento</a>
+            <a href="#" onclick="openModal('sizeGuideModal')">Guida alle Taglie</a>
+          </div>
+        </div>
+
+        <!-- Colonna 4: Dati Societari Obbligatori (Conformità Legale Art. 35 D.P.R. 633/72) -->
+        <div class="footer-col">
+          <h4>Dati Aziendali</h4>
+          <div class="legal-box">
+            <strong>Ganza Gravel A.S.D.</strong><br>
+            Sede Operativa: Peccioli / Pontedera (PI)<br>
+            <strong>Partita IVA:</strong> IT02384920501<br>
+            <strong>Codice Fiscale:</strong> 90054810502<br>
+            <strong>Codice Destinatario SDI:</strong> M5UXCR1<br>
+            <strong>PEC:</strong> ganzagravel@pec.it<br>
+            Email: <a href="mailto:info@ganzagravel.it" style="color:var(--accent);">info@ganzagravel.it</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          Copyright &copy; 2026 Ganza Gravel - Tutti i diritti riservati.
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" onclick="alert('Informativa Privacy conforme GDPR.'); return false;">Privacy Policy</a>
+          <a href="#" onclick="alert('Informativa Cookie conforme alle direttive UE.'); return false;">Cookie Policy</a>
+          <a href="#" onclick="alert('Condizioni di vendita: Spedizioni con corriere espresso in 24/48h. Diritto di recesso entro 30 giorni.'); return false;">Spedizioni e Resi</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALI E DRAWER GLOBALI
+       ========================================================================== -->
+
+  <!-- 1. CART SLIDE-OVER DRAWER -->
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Il Tuo Carrello (<span class="cart-badge" style="position:static; display:inline-flex;">0</span>)</h3>
+      <button class="close-drawer" onclick="closeCartDrawer()">&times;</button>
+    </div>
+
+    <!-- Barra Spedizione Gratuita -->
+    <div style="padding: 12px 24px; background: var(--sand-bg); font-size: 0.825rem; border-bottom: 1px solid var(--sand-border); text-align: center;" id="freeShippingBar">
+      Spedizione <strong>Gratuita</strong> per ordini superiori a €79
+    </div>
+
+    <div class="cart-items-container" id="cartItemsList">
+      <!-- Generato dinamicamente da js/store.js -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <!-- Coupon Box -->
+      <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+        <input type="text" id="couponInput" placeholder="Codice promozionale..." class="form-input" style="padding: 8px 12px; font-size: 0.85rem; text-transform: uppercase;">
+        <button type="button" class="btn btn-outline btn-sm" onclick="applyCouponCode()">Applica</button>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px;">
+        <span>Subtotale:</span>
+        <span id="cartSubtotal">€0.00</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+        <span>Spedizione:</span>
+        <span id="cartShipping">€6.90</span>
+      </div>
+      <div class="cart-subtotal-row">
+        <span>Totale:</span>
+        <span id="cartTotal" style="color:var(--primary);">€0.00</span>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-lg" style="width: 100%;" onclick="proceedToCheckout()">
+        Procedi al Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL DETTAGLIO PERCORSO CON FOTO, MAPPA E GPX -->
+  <div class="modal-overlay" id="trailDetailModal">
+    <div class="modal-container modal-trail-detail">
+      <div class="modal-header">
+        <div style="flex-grow: 1;">
+          <span id="detailTrailBadge" class="badge badge-primary" style="margin-bottom: 6px;">Percorso</span>
+          <h3 id="detailTrailTitle" style="font-size: 1.5rem; color: var(--dark); line-height: 1.2;">Nome Percorso</h3>
+          <div id="detailTrailLoc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"></div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('trailDetailModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="trail-gallery-box">
+          <div class="trail-main-photo-wrap">
+            <img id="detailMainPhoto" src="" alt="Foto Percorso">
+            <div class="trail-photo-caption" id="detailMainCaption"></div>
+          </div>
+          <div class="trail-thumbs-strip" id="detailThumbsContainer"></div>
+        </div>
+        <div class="telemetry-grid" id="detailTelemetryGrid"></div>
+        <div id="detailSurfaceBar"></div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 8px;">Descrizione dell'Itinerario</h4>
+          <p id="detailTrailDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;"></p>
+          <h5 style="margin: 16px 0 10px 0; text-transform: uppercase; font-size: 0.9rem; color: var(--accent);">Punti Salienti del Tracciato</h5>
+          <ul class="highlights-list" id="detailTrailHighlights"></ul>
+        </div>
+        <div style="margin-bottom: 26px; background: var(--sand-light); border: 1px solid var(--sand-border); border-radius: var(--radius-sm); padding: 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+            <h4 style="font-size: 1rem; margin-bottom: 0;">Profilo Altimetrico Interattivo</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Quota in metri sul livello del mare</span>
+          </div>
+          <canvas id="detailElevationChart" height="90" style="width: 100%; height: 90px;"></canvas>
+        </div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 12px;">Punti di Interesse & Ristori sul Percorso</h4>
+          <div class="pois-grid" id="detailPoisContainer"></div>
+        </div>
+        <div id="detailEquipmentTips"></div>
+      </div>
+
+      <div class="detail-modal-footer">
+        <a id="detailGoogleMapsBtn" href="#" target="_blank" class="btn btn-outline btn-sm">
+          🧭 Naviga al Ritrovo (Google Maps)
+        </a>
+        <button type="button" class="btn btn-accent btn-lg" id="detailDownloadGpxBtn">
+          ⬇️ Scarica Traccia GPX Ufficiale
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MODAL GPX LEAD GENERATION (ISPIRAZIONE GHIAIA EXPLORERS) -->
+  <div class="modal-overlay" id="gpxModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: 700;">Download Traccia GPS Ufficiale</span>
+          <h3 id="modalTrailTitle">7° Ganza Gravel - Il Ganzo</h3>
+        </div>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          Inserisci i tuoi dati per scaricare subito il file <code>.gpx</code> compatibile con Garmin, Wahoo, Hammerhead, Bryton, Strava e Komoot.
+        </p>
+
+        <form id="gpxLeadForm">
+          <div class="form-group">
+            <label class="form-label" for="gpxUserName">Nome & Cognome *</label>
+            <input type="text" id="gpxUserName" required placeholder="Mario Rossi" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gpxUserEmail">Indirizzo Email *</label>
+            <input type="email" id="gpxUserEmail" required placeholder="mario.rossi@email.it" class="form-input">
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="gpxDisclaimer" required checked>
+            <label for="gpxDisclaimer">
+              Dichiaro di aver preso visione delle condizioni d'uso: pedalo sotto la mia responsabilità nel rispetto del codice della strada.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            ⬇️ Scarica Traccia GPX Adesso
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MODAL QUICK VIEW PRODOTTO -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-container" style="max-width: 780px;">
+      <div class="modal-header">
+        <h3>Dettaglio Prodotto</h3>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body" id="quickViewContent">
+        <!-- Generato dinamicamente da js/store.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MODAL GUIDA TAGLIE -->
+  <div class="modal-overlay" id="sizeGuideModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Guida alle Taglie Ganza Store</h3>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          I nostri completini hanno una vestibilità <strong>Club Fit / Gravel Comfort</strong>: aderente ma non costrittiva, ideale per ore di pedalata su sterrato.
+        </p>
+
+        <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.875rem;">
+          <thead>
+            <tr style="background: var(--sand-bg); border-bottom: 2px solid var(--sand-border);">
+              <th style="padding: 10px;">Taglia</th>
+              <th style="padding: 10px;">Torace (cm)</th>
+              <th style="padding: 10px;">Girovita (cm)</th>
+              <th style="padding: 10px;">Peso indicativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--sand-border);"><td style="padding: 8px;"><strong>S</strong></td><td>88 - 94</td><td>76 - 82</td><td>58 - 68 kg</td></tr>
+            <tr style="border-bottom: 1px solid var(--sand-border);"><td style="padding: 8px;"><strong>M</strong></td><td>94 - 100</td><td>82 - 88</td><td>68 - 77 kg</td></tr>
+            <tr style="border-bottom: 1px solid var(--sand-border);"><td style="padding: 8px;"><strong>L</strong></td><td>100 - 106</td><td>88 - 94</td><td>77 - 85 kg</td></tr>
+            <tr style="border-bottom: 1px solid var(--sand-border);"><td style="padding: 8px;"><strong>XL</strong></td><td>106 - 112</td><td>94 - 102</td><td>85 - 94 kg</td></tr>
+            <tr><td style="padding: 8px;"><strong>XXL</strong></td><td>112 - 118</td><td>102 - 110</td><td>&gt; 94 kg</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top: 20px; font-size: 0.825rem; color: var(--text-muted);">
+          💡 <em>Sei indeciso tra due taglie? Per un fit più morbido scegli la taglia superiore. In caso di errore, il cambio taglia è gratuito entro 30 giorni!</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MODAL SIMULAZIONE CHECKOUT -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Finalizza Ordine (Checkout)</h3>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="completeCheckoutOrder(event)">
+          <div class="form-group">
+            <label class="form-label" for="orderName">Nome & Cognome *</label>
+            <input type="text" id="orderName" required placeholder="Mario Rossi" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="orderEmail">Email di conferma *</label>
+            <input type="email" id="orderEmail" required placeholder="mario.rossi@email.it" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="orderAddress">Indirizzo di Spedizione *</label>
+            <input type="text" id="orderAddress" required placeholder="Via dei Cipressi 12, 56037 Peccioli (PI)" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Metodo di Pagamento</label>
+            <div style="display:flex; gap:12px; margin-top:8px;">
+              <label style="display:flex; align-items:center; gap:6px; font-size:0.9rem;">
+                <input type="radio" name="payment" checked> 💳 Carta di Credito / Debito
+              </label>
+              <label style="display:flex; align-items:center; gap:6px; font-size:0.9rem;">
+                <input type="radio" name="payment"> 🅿️ PayPal / Apple Pay
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 14px;">
+            Conferma Ordine
+          </button>
+        </form>
+      </div>
+    </div>
+  <!-- MODAL AUTENTICAZIONE / LOGIN -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <span class="rustic-sticker" style="font-size:1.15rem; color:var(--primary); display:block; margin-bottom:2px;">O bischero, bentornato!</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 2px;">Area Personale Ganza Crew</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('authModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Box Credenziali Fittizie Demo in Evidenza -->
+        <div class="demo-box">
+          <div class="demo-box-header">
+            <span class="demo-title">⚡ Credenziali Fittizie Demo:</span>
+            <span class="badge badge-accent" style="font-size:0.65rem;">ACCESSO TEST</span>
+          </div>
+          <div class="demo-credentials-grid">
+            <div class="demo-cred-item">
+              <strong>Email:</strong>
+              <code>mario.ganzo@email.it</code>
+            </div>
+            <div class="demo-cred-item">
+              <strong>Password:</strong>
+              <code>Ganza2026!</code>
+            </div>
+          </div>
+          <button type="button" class="btn-fill-demo" onclick="fillDemoCredentials()">
+            👉 Clicca qui per compilare in automatico le credenziali demo
+          </button>
+        </div>
+
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="authEmail">Indirizzo Email</label>
+            <input type="email" id="authEmail" required placeholder="mario.ganzo@email.it" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="authPassword">Password</label>
+            <input type="password" id="authPassword" required placeholder="••••••••" class="form-input">
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.85rem;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" checked> Ricordami
+            </label>
+            <a href="#" onclick="showToast('Password reimpostata con successo per l\'utente demo!', 'accent'); return false;" style="color:var(--accent); font-weight:600;">Password persa?</a>
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            🚴 Entra nel Tuo Profilo &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/gpx-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/trails.js"></script>
+</body>
+</html>

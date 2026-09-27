@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganza Travel | La Tua Agenzia & Guida Gravel a Pisa e in Valdera</title>
+  <meta name="description" content="Ganza Travel: l'agenzia cicloturistica del territorio pisano. Tour di gruppo guidati, weekend bikepacking, degustazioni in cantina e noleggio gravel con consegna in agriturismo.">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Ganza Travel | Tour Guidati & Vacanze Gravel nel Pisano">
+  <meta property="og:description" content="Sei in vacanza in Toscana? Scopri le uscite di gruppo settimanali, i weekend bikepacking e il noleggio bici con Ganza Gravel.">
+  <meta property="og:type" content="website">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="travel">
+
+  <!-- Floating Social Dock a Sinistra in Sovraimpressione (Stile Ghiaia Explorers) -->
+  <aside class="floating-social-dock" aria-label="Social Ganza Gravel">
+    <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn instagram" aria-label="Instagram" title="Seguici su Instagram (@ganzagravel)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="dock-tooltip">Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn facebook" aria-label="Facebook" title="Pagina Facebook Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      <span class="dock-tooltip">Facebook</span>
+    </a>
+    <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="dock-social-btn strava" aria-label="Strava Club" title="Strava Club Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+      </svg>
+      <span class="dock-tooltip">Strava</span>
+    </a>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="dock-social-btn whatsapp" aria-label="WhatsApp Community" title="Chatta con noi su WhatsApp (351 5996770)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span class="dock-tooltip">WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+        <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="eventi.html" class="nav-link">Eventi</a>
+        <a href="travel.html" class="nav-link active">Ganza Travel</a>
+        <a href="convenzioni.html" class="nav-link">Convenzioni</a>
+        <a href="percorsi.html" class="nav-link">Mappe & GPX</a>
+        <a href="store.html" class="nav-link">Ganza Store</a>
+        <a href="chi-siamo.html" class="nav-link">Chi Siamo</a>
+        <a href="iscriviti.html" class="nav-link">Iscriviti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="account-btn" id="accountHeaderBtn" onclick="handleAccountBtnClick()" aria-label="Area Personale" title="Area Personale">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="account-dot" id="accountDot"></span>
+        </button>
+
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="Carrello">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.3rem;">GANZA<span style="color:var(--accent);">TRAVEL</span></span>
+      <button class="close-drawer">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="profilo.html" id="mobileAccountLink">👤 Il Mio Profilo / Accedi</a>
+      <a href="index.html">Home</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="travel.html" class="active">Ganza Travel</a>
+      <a href="convenzioni.html">Convenzioni</a>
+      <a href="percorsi.html">Percorsi & GPX</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Ganza Store</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="iscriviti.html">Iscriviti</a>
+      </nav>
+
+    <!-- Social Bar nel Mobile Drawer -->
+    <div class="drawer-socials">
+      <span class="drawer-social-label">Seguici sui Social:</span>
+      <div class="drawer-social-icons">
+        <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+          </svg>
+        </a>
+        <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <a href="#prenota" class="btn btn-accent btn-lg" style="width: 100%; margin-top: auto;">
+      Richiedi Tour o Noleggio
+    </a>
+  </div>
+
+  <main>
+    <!-- HERO SECTION GANZA TRAVEL -->
+    <section class="travel-hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-meta">
+            <span class="edition">GANZA TRAVEL</span>
+            <span>•</span>
+            <span>CYCLING AGENCY & EXPERIENCE HUB</span>
+            <span>•</span>
+            <span>TERRE DI PISA & VALDERA</span>
+          </div>
+
+          <h1 class="hero-title">
+            La Tua Base Gravel nel Cuore <br>
+            <span class="highlight">della Toscana Pisana.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Sei in vacanza o di passaggio a Pisa, Pontedera, Peccioli o Volterra? <strong>Ganza Gravel è la tua agenzia di viaggio specializzata su due ruote</strong>. Unisciti alle nostre uscite di gruppo settimanali, vivi weekend bikepacking indimenticabili tra vigne e borghi d'arte, o prenota una guida privata con noleggio bici direttamente al tuo alloggio.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#uscite-gruppo" class="btn btn-accent btn-lg">
+              🚴 Uscite di Gruppo Aperte
+            </a>
+            <a href="#pacchetti" class="btn btn-outline-white btn-lg">
+              🏕️ Weekend Bikepacking & Cantine
+            </a>
+            <a href="#noleggio" class="btn btn-outline-white btn-lg">
+              🚲 Noleggio Gravel & E-Gravel
+            </a>
+          </div>
+
+          <!-- Trust Badges Bar -->
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.9);">
+            <span>✓ Guide Locali Certificate FCI / AIGAE</span>
+            <span>✓ Consegna Bici a Domicilio in Hotel / Agriturismo</span>
+            <span>✓ Furgone Van di Supporto & Transfer Bagagli</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- I 4 PILASTRI DI GANZA TRAVEL -->
+    <section class="section" style="padding-top: 0; transform: translateY(-30px); position: relative; z-index: 10;">
+      <div class="container">
+        <div class="pillars-grid" style="margin-top: 0;">
+          
+          <div class="pillar-card">
+            <div class="pillar-icon orange">🗺️</div>
+            <h3 class="pillar-title">100% Locals</h3>
+            <p class="pillar-desc">
+              Siamo nati e cresciuti tra le strade bianche di Peccioli, Lajatico e Pontedera. Conosciamo ogni sentiero nascosto e le vie più panoramiche lontano dalle auto.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon red">🍷</div>
+            <h3 class="pillar-title">Vino & Tipicità D.O.C.</h3>
+            <p class="pillar-desc">
+              Non solo polvere e salite: i nostri tour integrano soste nelle storiche tenute vinicole (Podere La Chiesa, Badia di Morrona) con taglieri toscani e pecorino.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon green">🚐</div>
+            <h3 class="pillar-title">Supporto Van & Bagagli</h3>
+            <p class="pillar-desc">
+              Pedala leggero: nei pacchetti di più giorni trasportiamo noi i tuoi bagagli da un alloggio all'altro, garantendo assistenza meccanica sul percorso.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- USCITE DI GRUPPO APERTE A TUTTI (SOCIAL RIDES) -->
+    <section class="section" id="uscite-gruppo" style="background: var(--sand-light);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Aperte a Tutti i Ciclisti</span>
+          <h2>Calendario Tour di Gruppo & Social Rides</h2>
+          <p class="section-desc">
+            Sei in Toscana da solo o con amici? Non pedalare isolato: unisciti ai nostri tour guidati di gruppo settimanali! Ritmo rilassato, spirito ganzo e terzo tempo immancabile.
+          </p>
+        </div>
+
+        <div class="rides-calendar-grid">
+          
+          <!-- Ride 1: Valdera Panorama -->
+          <div class="ride-card">
+            <div class="ride-card-image">
+              <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Valdera Panorama Social Ride">
+              <span class="ride-schedule-badge">OGNI SABATO • ORE 09:00</span>
+              <span class="ride-price-tag">€18 / persona</span>
+            </div>
+            <div class="ride-card-body">
+              <h3>Valdera Panorama Social Ride</h3>
+              <div class="ride-meta-specs">
+                <span>📍 Ritrovo: <strong>Peccioli (PI)</strong></span>
+                <span>📏 <strong>46 km</strong></span>
+                <span>⛰️ <strong>+580m</strong></span>
+                <span>⛓️ Facile/Medio</span>
+              </div>
+              <p style="font-size: 0.925rem; color: var(--text-muted); flex-grow: 1;">
+                La classica uscita di gruppo del sabato mattina. Si parte da Peccioli attraversando i borghi colorati di Ghizzano e Fabbrica. Pendenze morbide, sosta caffè e schiacciata toscana con birra fresca all'arrivo.
+              </p>
+              <div style="background: var(--sand-bg); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; margin-bottom: 16px;">
+                🎁 <strong>Include:</strong> Guida certificata, caffè di benvenuto, traccia GPX e ristoro all'arrivo.
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button type="button" class="btn btn-accent btn-sm" style="flex:1;" onclick="bookSpecificTour('Valdera Panorama Social Ride')">
+                  Partecipa al Gruppo
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('il-ganzo-64k')">
+                  Traccia
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ride 2: Sunset & Wine al Teatro del Silenzio -->
+          <div class="ride-card">
+            <div class="ride-card-image">
+              <img src="https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=800&q=80" alt="Sunset Gravel al Teatro del Silenzio">
+              <span class="ride-schedule-badge" style="background:var(--accent);">OGNI VENERDÌ • ORE 17:00</span>
+              <span class="ride-price-tag">€28 / persona</span>
+            </div>
+            <div class="ride-card-body">
+              <h3>Sunset & Wine al Teatro del Silenzio</h3>
+              <div class="ride-meta-specs">
+                <span>📍 Ritrovo: <strong>Lajatico (PI)</strong></span>
+                <span>📏 <strong>35 km</strong></span>
+                <span>⛰️ <strong>+420m</strong></span>
+                <span>⛓️ Turistico/Relax</span>
+              </div>
+              <p style="font-size: 0.925rem; color: var(--text-muted); flex-grow: 1;">
+                Un'esperienza magica al calar del sole. Pedaliamo tra le colline di Lajatico raggiungendo l'anfiteatro all'aperto di Bocelli. Sosta panoramica al tramonto con aperitivo, crostini e degustazione di vino Chianti Pisano.
+              </p>
+              <div style="background: var(--sand-bg); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; margin-bottom: 16px;">
+                🎁 <strong>Include:</strong> Guida, aperitivo al tramonto con vino locale e stuzzichini toscani.
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button type="button" class="btn btn-accent btn-sm" style="flex:1;" onclick="bookSpecificTour('Sunset & Wine al Teatro del Silenzio')">
+                  Partecipa al Gruppo
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('teatro-del-silenzio')">
+                  Traccia
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ride 3: Balze di Volterra & Calanchi Wild -->
+          <div class="ride-card">
+            <div class="ride-card-image">
+              <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80" alt="Balze di Volterra & Calanchi Wild">
+              <span class="ride-schedule-badge" style="background:var(--forest);">OGNI DOMENICA • ORE 08:30</span>
+              <span class="ride-price-tag">€35 / persona</span>
+            </div>
+            <div class="ride-card-body">
+              <h3>Balze di Volterra & Calanchi Wild</h3>
+              <div class="ride-meta-specs">
+                <span>📍 Ritrovo: <strong>Volterra (PI)</strong></span>
+                <span>📏 <strong>62 km</strong></span>
+                <span>⛰️ <strong>+1.180m</strong></span>
+                <span>⛓️ Avventura/Medio-Alto</span>
+              </div>
+              <p style="font-size: 0.925rem; color: var(--text-muted); flex-grow: 1;">
+                Per chi cerca ghiaia autentica e dislivello. Sfioriamo i burroni delle Balze di Volterra e i calanchi lunari con furgone van d'appoggio al seguito. Pranzo tipico finale con pasta e pecorino locale.
+              </p>
+              <div style="background: var(--sand-bg); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; margin-bottom: 16px;">
+                🎁 <strong>Include:</strong> 2 guide, furgone d'appoggio van, ristoro a metà percorso e pranzo a Volterra.
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button type="button" class="btn btn-accent btn-sm" style="flex:1;" onclick="bookSpecificTour('Balze di Volterra & Calanchi Wild')">
+                  Partecipa al Gruppo
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="openTrailDetail('volterra-etrusca-wild')">
+                  Traccia
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PACCHETTI VACANZA & WEEKEND BIKEPACKING -->
+    <section class="section" id="pacchetti">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Vacanze Gravel Senza Pensieri</span>
+          <h2>I Nostri Pacchetti Viaggio & Weekend</h2>
+          <p class="section-desc">
+            Organizziamo la tua vacanza ciclistica completa in Toscana: soggiorno nei migliori agriturismi bike-friendly con piscina, tracce verificate, guide esperte e degustazioni enogastronomiche esclusive.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+          
+          <!-- Pacchetto 1: Weekend Gravel & Vini Valdera -->
+          <div class="package-card featured">
+            <div class="package-card-header">
+              <span class="package-duration">2 GIORNI / 1 NOTTE • IL PIÙ RICHIESTO</span>
+              <h3>Gravel & Vini della Valdera</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">Un fine settimana all'insegna di panorami toscani, strade bianche e grandi vini.</p>
+              <div class="package-price-row">
+                <span class="package-price-num">€195</span>
+                <span class="package-price-note">/ persona (min. 2 pax)</span>
+              </div>
+            </div>
+            <div class="package-body">
+              <ul class="package-features-list">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>1 Notte in Agriturismo</strong> con piscina e colazione toscana artigianale a Peccioli o Chianni</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>2 Tour Guidati</strong> con istruttore/guida locale Ganza Gravel</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Visita e Degustazione Guidata</strong> alla cantina di design Podere La Chiesa</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Tracce GPX personalizzate, briefing serale e assistenza meccanica</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Opzione aggiuntiva: Noleggio bici gravel o e-gravel consegnata in loco</span>
+                </li>
+              </ul>
+              <button type="button" class="btn btn-accent btn-lg" style="width:100%;" onclick="bookSpecificTour('Weekend Gravel & Vini Valdera (2 Giorni)')">
+                Richiedi Disponibilità Weekend
+              </button>
+            </div>
+          </div>
+
+          <!-- Pacchetto 2: Grand Tour Bikepacking Terre di Pisa -->
+          <div class="package-card">
+            <div class="package-card-header">
+              <span class="package-duration">3 GIORNI / 2 NOTTI • AVVENTURA WILD</span>
+              <h3>Bikepacking Etrusco & Balze</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">L'anello totale del Pisano: Pontedera, Peccioli, Volterra e Lajatico in totale libertà.</p>
+              <div class="package-price-row">
+                <span class="package-price-num">€340</span>
+                <span class="package-price-note">/ persona</span>
+              </div>
+            </div>
+            <div class="package-body">
+              <ul class="package-features-list">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>2 Pernottamenti</strong> in strutture rurali tipiche selezionate lungo la rotta</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Transfer Bagagli Incluso:</strong> pedali solo col necessario, al resto pensiamo noi</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Guida o modalità self-guided con tracciamento GPS live di sicurezza</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Furgone van d'emergenza sempre attivo nel comprensorio</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Cene tipiche toscane con prodotti a km 0 comprese</span>
+                </li>
+              </ul>
+              <button type="button" class="btn btn-primary btn-lg" style="width:100%;" onclick="bookSpecificTour('Bikepacking Etrusco & Balze (3 Giorni)')">
+                Richiedi Info Bikepacking
+              </button>
+            </div>
+          </div>
+
+          <!-- Pacchetto 3: VIP Bespoke Private Guide -->
+          <div class="package-card">
+            <div class="package-card-header">
+              <span class="package-duration">GIORNALIERO • 100% PERSONALIZZATO</span>
+              <h3>Tour Privato con Guida Dedicata</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">Un'intera giornata su misura solo per te, la tua famiglia o il tuo gruppo di amici.</p>
+              <div class="package-price-row">
+                <span class="package-price-num">€85</span>
+                <span class="package-price-note">/ persona (da 2 a 8 ciclisti)</span>
+              </div>
+            </div>
+            <div class="package-body">
+              <ul class="package-features-list">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Guida Esclusiva Privata</strong> (Sergio o Daniele) per tutta la durata del tour</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Scelta del dislivello, chilometraggio e tipo di terreno in base ai tuoi desideri</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Partenza direttamente dal tuo hotel/agriturismo ovunque nel Pisano</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Servizio fotografico professionale ricordo della tua giornata</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Pranzo tradizionale in osteria toscana convenzionata</span>
+                </li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-lg" style="width:100%;" onclick="bookSpecificTour('Tour Privato VIP con Guida Dedicata')">
+                Personalizza il Tuo Tour
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- NOLEGGIO BICI GRAVEL & E-GRAVEL NEL PISANO -->
+    <section class="section" id="noleggio" style="background: var(--sand-light);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Viaggia Leggero</span>
+          <h2>Noleggio Bici Gravel & E-Gravel con Consegna a Domicilio</h2>
+          <p class="section-desc">
+            Arrivi in aereo a Pisa o in treno e non vuoi trasportare la tua bicicletta? Ti consegniamo biciclette gravel e e-gravel moderne direttamente nel tuo agriturismo, hotel o casa vacanze.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 40px;">
+          
+          <div style="background:var(--white); border-radius:var(--radius-sm); border:1px solid var(--sand-border); padding:28px;">
+            <div style="font-size:2.5rem; margin-bottom:12px;">🚲</div>
+            <h3>Gravel Bike Muscolare</h3>
+            <p style="color:var(--text-muted); font-size:0.925rem;">
+              Biciclette gravel di ultima generazione con telaio leggero in alluminio/carbonio, trasmissione 1x11 / 1x12 Shimano GRX o SRAM, freni a disco idraulici e pneumatici tubeless 40-45mm perfetti per le strade bianche di Peccioli.
+            </p>
+            <div style="font-family:var(--font-heading); font-size:1.4rem; color:var(--primary); margin:14px 0;">
+              €35 <span style="font-size:0.85rem; font-family:var(--font-body); color:var(--text-muted);">/ giorno (sconti da 3 giorni in su)</span>
+            </div>
+            <ul style="font-size:0.85rem; color:var(--text-muted); line-height:1.8; margin-bottom:20px;">
+              <li>✓ Casco e kit foratura inclusi</li>
+              <li>✓ Pedali a scelta (Flat, Shimano SPD, Crankbrothers)</li>
+              <li>✓ Borsa sottosella o manubrio inclusa</li>
+            </ul>
+            <button type="button" class="btn btn-outline btn-sm" style="width:100%;" onclick="bookSpecificTour('Noleggio Gravel Muscolare')">
+              Prenota Bici Gravel
+            </button>
+          </div>
+
+          <div style="background:var(--white); border-radius:var(--radius-sm); border:1px solid var(--sand-border); padding:28px;">
+            <div style="font-size:2.5rem; margin-bottom:12px;">⚡</div>
+            <h3>E-Gravel a Pedalata Assistita</h3>
+            <p style="color:var(--text-muted); font-size:0.925rem;">
+              La soluzione ideale per superare senza fatica le salite verso Volterra o i calanchi della Valdera. Motore centrale silenzioso, batteria a lunga durata (autonomia oltre 100km) e assistenza fluida e naturale.
+            </p>
+            <div style="font-family:var(--font-heading); font-size:1.4rem; color:var(--primary); margin:14px 0;">
+              €50 <span style="font-size:0.85rem; font-family:var(--font-body); color:var(--text-muted);">/ giorno (caricabatterie incluso)</span>
+            </div>
+            <ul style="font-size:0.85rem; color:var(--text-muted); line-height:1.8; margin-bottom:20px;">
+              <li>✓ Oltre 100 km di autonomia</li>
+              <li>✓ Ideale per pedalare insieme a rider di ogni livello</li>
+              <li>✓ Supporto GPS e porta telefono al manubrio</li>
+            </ul>
+            <button type="button" class="btn btn-accent btn-sm" style="width:100%;" onclick="bookSpecificTour('Noleggio E-Gravel')">
+              Prenota E-Gravel
+            </button>
+          </div>
+
+          <div style="background:var(--white); border-radius:var(--radius-sm); border:1px solid var(--sand-border); padding:28px;">
+            <div style="font-size:2.5rem; margin-bottom:12px;">🚚</div>
+            <h3>Consegna & Transfer Bagagli</h3>
+            <p style="color:var(--text-muted); font-size:0.925rem;">
+              Consegniamo e ritiriamo le biciclette in tutta la provincia di Pisa (Pontedera, Peccioli, Volterra, San Miniato, Chianni, Terricciola). Inoltre, offriamo il transfer giornaliero dei bagagli per i cicloviaggiatori.
+            </p>
+            <div style="font-family:var(--font-heading); font-size:1.4rem; color:var(--forest); margin:14px 0;">
+              Servizio Chiavi in Mano
+            </div>
+            <ul style="font-size:0.85rem; color:var(--text-muted); line-height:1.8; margin-bottom:20px;">
+              <li>✓ Consegna puntuale concordata su orario</li>
+              <li>✓ Regolazione sella e assetto personalizzato</li>
+              <li>✓ Assistenza rapida per forature o imprevisti</li>
+            </ul>
+            <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4?text=Ciao%20Ganza%20Travel!%20Vorrei%20informazioni%20sulla%20consegna%20bici%20in%20alloggio" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="width:100%;">
+              Richiedi Consegna via WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULO PRENOTAZIONE & CONTATTO DIRETTO (PRENOTA) -->
+    <section class="section" id="prenota">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Inizia la Tua Avventura</span>
+          <h2>Richiedi Informazioni o Prenota il Tuo Tour</h2>
+          <p class="section-desc">
+            Compila il modulo o scrivici direttamente. Sergio e Daniele ti risponderanno personalmente in meno di 24 ore con il programma perfetto per il tuo soggiorno nel Pisano.
+          </p>
+        </div>
+
+        <div class="booking-calculator-box">
+          <form id="travelBookingForm">
+            <div class="booking-form-grid">
+              
+              <div class="form-group">
+                <label class="form-label" for="travelName">Nome & Cognome *</label>
+                <input type="text" id="travelName" required placeholder="Mario Rossi" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="travelEmail">Indirizzo Email *</label>
+                <input type="email" id="travelEmail" required placeholder="mario.rossi@email.it" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="travelPhone">Telefono / WhatsApp *</label>
+                <input type="tel" id="travelPhone" required placeholder="+39 351 5996770" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="travelExperience">Esperienza Desiderata</label>
+                <select id="travelExperience" class="form-input" style="cursor:pointer;">
+                  <option value="Valdera Panorama Social Ride">Social Ride del Sabato (Valdera Panorama - 46km)</option>
+                  <option value="Sunset & Wine al Teatro del Silenzio">Sunset & Wine al Teatro del Silenzio (Venerdì)</option>
+                  <option value="Balze di Volterra & Calanchi Wild">Balze di Volterra Wild (Domenica)</option>
+                  <option value="Weekend Gravel & Vini Valdera (2 Giorni)">Weekend Gravel & Vini (2 Giorni / 1 Notte)</option>
+                  <option value="Bikepacking Etrusco & Balze (3 Giorni)">Bikepacking Grand Tour (3 Giorni / 2 Notti)</option>
+                  <option value="Tour Privato VIP con Guida Dedicata">Tour Privato VIP su Misura</option>
+                  <option value="Noleggio Gravel Muscolare">Solo Noleggio Bici Gravel</option>
+                  <option value="Noleggio E-Gravel">Solo Noleggio E-Gravel</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="travelDate">Data Prevista o Periodo</label>
+                <input type="date" id="travelDate" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="travelRiders">Numero di Partecipanti</label>
+                <select id="travelRiders" class="form-input">
+                  <option value="1">1 ciclista (individuale)</option>
+                  <option value="2">2 ciclisti (coppia / amici)</option>
+                  <option value="3-5">Gruppetto (3 - 5 persone)</option>
+                  <option value="6+">Gruppo numeroso (&gt; 6 persone)</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label" for="travelNotes">Alloggio nel Pisano o Richieste Particolari</label>
+              <textarea id="travelNotes" rows="3" class="form-input" placeholder="Es: Alloggiamo in un agriturismo a Peccioli, desideriamo 2 e-gravel a noleggio e una sosta degustazione..."></textarea>
+            </div>
+
+            <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top: 24px;">
+              <button type="submit" class="btn btn-accent btn-lg" style="flex:1;">
+                📨 Invia Richiesta a Ganza Travel
+              </button>
+              
+              <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4?text=Ciao%20Ganza%20Travel!%20Sono%20interessato%20a%20un%20tour%20gravel%20nel%20Pisano" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="display:inline-flex; align-items:center; gap:8px;">
+                <span>💬 Contattaci su WhatsApp (+39 351 5996770)</span>
+              </a>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; text-align: center;">
+              🔒 I tuoi dati vengono trattati nel rispetto della privacy e utilizzati esclusivamente per organizzare la tua esperienza ciclistica.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIANZE DI CICLISTI CHE HANNO PEDALATO CON NOI -->
+    <section class="section" style="background: var(--sand-light);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Dicono di Noi</span>
+          <h2>Le Parole dei Ciclisti Ospiti</h2>
+          <p class="section-desc">Cicloturisti italiani e internazionali che hanno vissuto la Valdera in sella con Ganza Gravel.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "Ero in vacanza a Peccioli con la mia famiglia e cercavo una pedalata organizzata per non uscire da solo. Mi sono unito alla social ride del sabato: gruppo fantastico, ritmo perfetto, strade bianche da togliere il fiato e ristoro memorabile con bruschetta e vino locale."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">LW</div>
+              <div>
+                <strong>Lucas Weber</strong><br>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Monaco di Baviera (Germania) • Cicloturista</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "Abbiamo prenotato il weekend di 2 giorni in Valdera con guida e pernottamento in agriturismo con piscina. Daniele e David sono guide eccezionali, professionali ma con quella simpatia toscana che ti fa sentire a casa dal primo minuto. Torneremo sicuramente!"
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MG</div>
+              <div>
+                <strong>Marco & Giulia</strong><br>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Milano • Weekend Bikepacking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "We rented two e-gravel bikes delivered straight to our holiday home in Terricciola. The bikes were immaculate and the custom GPX route provided by Ganza Gravel around the Teatro del Silenzio was the absolute highlight of our Tuscany trip."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SJ</div>
+              <div>
+                <strong>Sarah Jenkins</strong><br>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Bristol (UK) • Noleggio & Tour Privato</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ GANZA TRAVEL -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Dubbi o Domande?</span>
+          <h2>Domande Frequenti su Ganza Travel</h2>
+        </div>
+
+        <div class="faq-accordion">
+          
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>Posso partecipare alle uscite di gruppo anche con una bicicletta elettrica (E-Gravel)?</span>
+              <span class="faq-icon">&#9660;</span>
+            </div>
+            <div class="faq-content">
+              Assolutamente sì! Le nostre social rides e i tour guidati accolgono con entusiasmo biciclette gravel muscolari, e-gravel ed e-MTB. Il nostro obiettivo è pedalare insieme godendosi il territorio, senza alcuna velleità agonistica.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>Dove vengono consegnate le biciclette a noleggio?</span>
+              <span class="faq-icon">&#9660;</span>
+            </div>
+            <div class="faq-content">
+              Effettuiamo la consegna e il ritiro direttamente presso il tuo alloggio (agriturismo, hotel, B&B o villa) in tutta l'Alta Valdera e provincia di Pisa (Peccioli, Lajatico, Terricciola, Pontedera, Palaia, Chianni, Volterra).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>Cosa succede in caso di pioggia o maltempo?</span>
+              <span class="faq-icon">&#9660;</span>
+            </div>
+            <div class="faq-content">
+              La sicurezza viene sempre al primo posto. In caso di maltempo che comprometta la sicurezza dei tracciati sterrati, offriamo la possibilità di riprogrammare l'uscita in una data alternativa o il rimborso integrale della quota versata.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>Qual è il livello atletico minimo richiesto?</span>
+              <span class="faq-icon">&#9660;</span>
+            </div>
+            <div class="faq-content">
+              Le uscite del sabato (Valdera Panorama) e del venerdì (Sunset & Wine) sono alla portata di chiunque abbia un minimo di abitudine a pedalare su strade bianche. Per chi desidera meno fatica consigliamo il noleggio di una delle nostre moderne e-gravel. Il tour di Volterra è invece consigliato a chi ha già un discreto allenamento.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="color: var(--white); margin-bottom: 14px;">
+            GANZA<span style="color:var(--accent);">TRAVEL</span>
+          </div>
+          <p>L'agenzia cicloturistica e il punto di riferimento gravel della Valdera e del territorio pisano. Tour guidati, weekend bikepacking e noleggio bici con consegna a domicilio.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Esperienze Travel</h4>
+          <div class="footer-links">
+            <a href="#uscite-gruppo">Uscite di Gruppo Settimanali</a>
+            <a href="#pacchetti">Weekend & Bikepacking</a>
+            <a href="#noleggio">Noleggio Gravel & E-Gravel</a>
+            <a href="#prenota">Richiedi Tour Privato</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Portale Ganza</h4>
+          <div class="footer-links">
+            <a href="eventi.html">Calendario Eventi & Raduno</a>
+            <a href="percorsi.html">Mappe & Tracce GPX</a>
+            <a href="store.html">Ganza Store</a>
+            <a href="chi-siamo.html">Staff & Contatti</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dati Aziendali & Legali</h4>
+          <div class="legal-box">
+            <strong>Ganza Gravel A.S.D. / Ganza Travel</strong><br>
+            Sede: Peccioli / Pontedera (PI)<br>
+            <strong>P.IVA:</strong> IT02384920501<br>
+            <strong>C.F.:</strong> 90054810502<br>
+            <strong>PEC:</strong> ganzagravel@pec.it
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Ganza Gravel - Tutti i diritti riservati.</div>
+        <div>Toscana, Italia</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALI CONDIVISE
+       ========================================================================== -->
+
+  <!-- MODAL DETTAGLIO PERCORSO CON FOTO, MAPPA E GPX -->
+  <div class="modal-overlay" id="trailDetailModal">
+    <div class="modal-container modal-trail-detail">
+      <div class="modal-header">
+        <div style="flex-grow: 1;">
+          <span id="detailTrailBadge" class="badge badge-primary" style="margin-bottom: 6px;">Percorso</span>
+          <h3 id="detailTrailTitle" style="font-size: 1.5rem; color: var(--dark); line-height: 1.2;">Nome Percorso</h3>
+          <div id="detailTrailLoc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"></div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('trailDetailModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Galleria Fotografica -->
+        <div class="trail-gallery-box">
+          <div class="trail-main-photo-wrap">
+            <img id="detailMainPhoto" src="" alt="Foto Percorso">
+            <div class="trail-photo-caption" id="detailMainCaption"></div>
+          </div>
+          <div class="trail-thumbs-strip" id="detailThumbsContainer"></div>
+        </div>
+
+        <!-- Griglia Telemetria e Dati Tecnici -->
+        <div class="telemetry-grid" id="detailTelemetryGrid"></div>
+
+        <!-- Barra Fondo Sterrato vs Asfalto -->
+        <div id="detailSurfaceBar"></div>
+
+        <!-- Descrizione del Percorso & Highlights -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 8px;">Descrizione dell'Itinerario</h4>
+          <p id="detailTrailDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;"></p>
+          
+          <h5 style="margin: 16px 0 10px 0; text-transform: uppercase; font-size: 0.9rem; color: var(--accent);">Punti Salienti del Tracciato</h5>
+          <ul class="highlights-list" id="detailTrailHighlights"></ul>
+        </div>
+
+        <!-- Profilo Altimetrico Canvas HD -->
+        <div style="margin-bottom: 26px; background: var(--sand-light); border: 1px solid var(--sand-border); border-radius: var(--radius-sm); padding: 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+            <h4 style="font-size: 1rem; margin-bottom: 0;">Profilo Altimetrico Interattivo</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Quota in metri sul livello del mare</span>
+          </div>
+          <canvas id="detailElevationChart" height="90" style="width: 100%; height: 90px;"></canvas>
+        </div>
+
+        <!-- Punti di Interesse (POIs) e Ristori -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 12px;">Punti di Interesse & Ristori sul Percorso</h4>
+          <div class="pois-grid" id="detailPoisContainer"></div>
+        </div>
+
+        <!-- Consigli Attrezzatura e Logistica -->
+        <div id="detailEquipmentTips"></div>
+      </div>
+
+      <!-- Footer Azioni -->
+      <div class="detail-modal-footer">
+        <a id="detailGoogleMapsBtn" href="#" target="_blank" class="btn btn-outline btn-sm">
+          🧭 Naviga al Ritrovo (Google Maps)
+        </a>
+        <button type="button" class="btn btn-accent btn-lg" id="detailDownloadGpxBtn">
+          ⬇️ Scarica Traccia GPX Ufficiale
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GPX LEAD GENERATION -->
+  <div class="modal-overlay" id="gpxModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: 700;">Download Traccia GPS Ufficiale</span>
+          <h3 id="modalTrailTitle">Ganza Gravel - Traccia GPX</h3>
+        </div>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          Inserisci i tuoi dati per scaricare subito il file <code>.gpx</code> compatibile con Garmin, Wahoo, Strava e Komoot.
+        </p>
+        <form id="gpxLeadForm">
+          <div class="form-group">
+            <label class="form-label" for="gpxUserName">Nome & Cognome *</label>
+            <input type="text" id="gpxUserName" required placeholder="Mario Rossi" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gpxUserEmail">Indirizzo Email *</label>
+            <input type="email" id="gpxUserEmail" required placeholder="mario.rossi@email.it" class="form-input">
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="gpxDisclaimer" required checked>
+            <label for="gpxDisclaimer">Dichiaro di aver preso visione delle condizioni d'uso: pedalo sotto la mia responsabilità nel rispetto del codice della strada.</label>
+          </div>
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            ⬇️ Scarica Traccia GPX Adesso
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Il Tuo Carrello (<span class="cart-badge" style="position:static; display:inline-flex;">0</span>)</h3>
+      <button class="close-drawer" onclick="closeCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items-container" id="cartItemsList"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row"><span>Totale:</span><span id="cartTotal">€0.00</span></div>
+      <a href="store.html" class="btn btn-primary btn-lg" style="width: 100%;">Vai allo Store</a>
+    </div>
+  </div>
+
+  <!-- MODAL AUTENTICAZIONE / LOGIN -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <span class="rustic-sticker" style="font-size:1.15rem; color:var(--primary); display:block; margin-bottom:2px;">O bischero, bentornato!</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 2px;">Area Personale Ganza Crew</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('authModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Box Credenziali Fittizie Demo in Evidenza -->
+        <div class="demo-box">
+          <div class="demo-box-header">
+            <span class="demo-title">⚡ Credenziali Fittizie Demo:</span>
+            <span class="badge badge-accent" style="font-size:0.65rem;">ACCESSO TEST</span>
+          </div>
+          <div class="demo-credentials-grid">
+            <div class="demo-cred-item">
+              <strong>Email:</strong>
+              <code>mario.ganzo@email.it</code>
+            </div>
+            <div class="demo-cred-item">
+              <strong>Password:</strong>
+              <code>Ganza2026!</code>
+            </div>
+          </div>
+          <button type="button" class="btn-fill-demo" onclick="fillDemoCredentials()">
+            👉 Clicca qui per compilare in automatico le credenziali demo
+          </button>
+        </div>
+
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="authEmail">Indirizzo Email</label>
+            <input type="email" id="authEmail" required placeholder="mario.ganzo@email.it" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="authPassword">Password</label>
+            <input type="password" id="authPassword" required placeholder="••••••••" class="form-input">
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.85rem;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" checked> Ricordami
+            </label>
+            <a href="#" onclick="showToast('Password reimpostata con successo per l\'utente demo!', 'accent'); return false;" style="color:var(--accent); font-weight:600;">Password persa?</a>
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            🚴 Entra nel Tuo Profilo &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/gpx-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/trails.js"></script>
+  <script>
+    function bookSpecificTour(tourName) {
+      const select = document.getElementById('travelExperience');
+      if (select) {
+        select.value = tourName;
+      }
+      const section = document.getElementById('prenota');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>

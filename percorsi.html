@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mappe & Tracce GPX Gravel in Toscana | Ganza Gravel Trails Hub</title>
+  <meta name="description" content="Esplora la mappa interattiva e scarica gratis le tracce GPX dei percorsi gravel della Valdera, Peccioli, Volterra e Lajatico. Metriche tecniche, dislivelli e indicazioni GPS.">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Floating Social Dock a Sinistra in Sovraimpressione (Stile Ghiaia Explorers) -->
+  <aside class="floating-social-dock" aria-label="Social Ganza Gravel">
+    <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn instagram" aria-label="Instagram" title="Seguici su Instagram (@ganzagravel)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="dock-tooltip">Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="dock-social-btn facebook" aria-label="Facebook" title="Pagina Facebook Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      <span class="dock-tooltip">Facebook</span>
+    </a>
+    <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="dock-social-btn strava" aria-label="Strava Club" title="Strava Club Ganza Gravel">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+      </svg>
+      <span class="dock-tooltip">Strava</span>
+    </a>
+    <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="dock-social-btn whatsapp" aria-label="WhatsApp Community" title="Chatta con noi su WhatsApp (351 5996770)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span class="dock-tooltip">WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/img/logo/Ganza-Gravel-logo.png" alt="Ganza Gravel" class="brand-logo-img">
+        <span>GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="eventi.html" class="nav-link">Eventi</a>
+        <a href="travel.html" class="nav-link">Ganza Travel</a>
+        <a href="convenzioni.html" class="nav-link">Convenzioni</a>
+        <a href="percorsi.html" class="nav-link active">Mappe & GPX</a>
+        <a href="store.html" class="nav-link">Ganza Store</a>
+        <a href="chi-siamo.html" class="nav-link">Chi Siamo</a>
+        <a href="iscriviti.html" class="nav-link">Iscriviti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="account-btn" id="accountHeaderBtn" onclick="handleAccountBtnClick()" aria-label="Area Personale" title="Area Personale">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="account-dot" id="accountDot"></span>
+        </button>
+
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="Carrello">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.3rem;">GANZA<span style="color:var(--accent);">GRAVEL</span></span>
+      <button class="close-drawer">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="profilo.html" id="mobileAccountLink">👤 Il Mio Profilo / Accedi</a>
+      <a href="index.html">Home</a>
+      <a href="eventi.html">Tutti gli Eventi</a>
+      <a href="travel.html">Ganza Travel</a>
+      <a href="convenzioni.html">Convenzioni</a>
+      <a href="percorsi.html" class="active">Percorsi & Tracce GPX</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Ganza Store</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="iscriviti.html">Iscriviti</a>
+      </nav>
+
+    <!-- Social Bar nel Mobile Drawer -->
+    <div class="drawer-socials">
+      <span class="drawer-social-label">Seguici sui Social:</span>
+      <div class="drawer-social-icons">
+        <a href="https://www.instagram.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/ganzagravel/" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.strava.com/clubs/ganzagravel" target="_blank" rel="noopener noreferrer" class="social-icon-btn strava" aria-label="Strava">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7.98 15.771h4.173"/>
+          </svg>
+        </a>
+        <a href="https://chat.whatsapp.com/E5cYcyKAxu95zuPDpYQ8X4" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SEZIONE PERCORSI (STILE GHIAIA EXPLORERS) -->
+    <section class="section" style="padding-bottom: 20px;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 30px;">
+          <span class="section-subtitle">Ganza Gravel Trails Finder</span>
+          <h1>Le Tracce GPX Ufficiali della Toscana Pisana</h1>
+          <p class="section-desc">
+            Il portale gratuito per esplorare le strade bianche e i sentieri più belli della Valdera, di Peccioli, Lajatico e Volterra. Clicca sui percorsi, analizza i dislivelli e scarica la traccia compatibile per il tuo navigatore GPS.
+          </p>
+        </div>
+
+        <!-- Mappa Interattiva Leaflet -->
+        <div class="map-section-wrapper">
+          <div class="map-controls-bar">
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; text-transform: uppercase;">
+              🗺️ Mappa Itinerari Valdera & Volterrano
+            </div>
+            <div class="map-filter-group">
+              <span class="filter-pill trail-filter-pill active" data-filter="all">Tutti i Percorsi</span>
+              <span class="filter-pill trail-filter-pill" data-filter="evento">Raduno 2026</span>
+              <span class="filter-pill trail-filter-pill" data-filter="permanente">Itinerari Permanenti</span>
+            </div>
+          </div>
+          <div id="leafletMap"></div>
+        </div>
+
+        <!-- Legenda Difficoltà Catene (Ispirazione Ghiaia) -->
+        <div style="background: var(--white); border: 1px solid var(--sand-border); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-weight:700; font-size:0.85rem; text-transform:uppercase;">Guida alle Difficoltà Tecniche:</span>
+          </div>
+          <div style="display:flex; gap:20px; flex-wrap:wrap; font-size:0.8rem; color:var(--text-muted);">
+            <span>⛓️ 1-2: <em>Strade bianche larghe e scorrevoli</em></span>
+            <span>⛓️⛓️ 3: <em>Ghiaia mista e brevi pendenze sterrate</em></span>
+            <span>⛓️⛓️⛓️ 4-5: <em>Salite ripide, calanchi e tratti tecnici</em></span>
+          </div>
+        </div>
+
+        <!-- Griglia Percorsi Dettagliati -->
+        <div class="trails-grid" id="trailsGridContainer">
+          <!-- Popolato dinamicamente da js/trails.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="color: var(--white); margin-bottom: 14px;">
+            GANZA<span style="color:var(--accent);">GRAVEL</span>
+          </div>
+          <p>Il portale delle tracce GPX gratuite della Valdera e del Pisano. Promuoviamo il turismo slow e la cultura delle due ruote in Toscana.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Itinerari</h4>
+          <div class="footer-links">
+            <a href="percorsi.html">Tutti i Percorsi GPX</a>
+            <a href="eventi.html#raduno-2026">Raduno Ufficiale 2026</a>
+            <a href="eventi.html#quote">Programma & Ristori</a>
+            <a href="convenzioni.html">Convenzioni Partner</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Abbigliamento</h4>
+          <div class="footer-links">
+            <a href="store.html">Ganza Store</a>
+            <a href="store.html?cat=pantaloni">Pantaloncini con Fondello</a>
+            <a href="store.html?cat=estivo">Maglie Grafiche</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dati Societari</h4>
+          <div class="legal-box">
+            <strong>Ganza Gravel A.S.D.</strong><br>
+            Peccioli / Pontedera (PI)<br>
+            <strong>P.IVA:</strong> IT02384920501<br>
+            <strong>C.F.:</strong> 90054810502<br>
+            <strong>PEC:</strong> ganzagravel@pec.it
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Ganza Gravel - Tutti i diritti riservati.</div>
+        <div>Toscana, Italia</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modali Condivise -->
+  <!-- MODAL DETTAGLIO PERCORSO CON FOTO, MAPPA E GPX -->
+  <div class="modal-overlay" id="trailDetailModal">
+    <div class="modal-container modal-trail-detail">
+      <div class="modal-header">
+        <div style="flex-grow: 1;">
+          <span id="detailTrailBadge" class="badge badge-primary" style="margin-bottom: 6px;">Percorso</span>
+          <h3 id="detailTrailTitle" style="font-size: 1.5rem; color: var(--dark); line-height: 1.2;">Nome Percorso</h3>
+          <div id="detailTrailLoc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"></div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('trailDetailModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="trail-gallery-box">
+          <div class="trail-main-photo-wrap">
+            <img id="detailMainPhoto" src="" alt="Foto Percorso">
+            <div class="trail-photo-caption" id="detailMainCaption"></div>
+          </div>
+          <div class="trail-thumbs-strip" id="detailThumbsContainer"></div>
+        </div>
+        <div class="telemetry-grid" id="detailTelemetryGrid"></div>
+        <div id="detailSurfaceBar"></div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 8px;">Descrizione dell'Itinerario</h4>
+          <p id="detailTrailDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;"></p>
+          <h5 style="margin: 16px 0 10px 0; text-transform: uppercase; font-size: 0.9rem; color: var(--accent);">Punti Salienti del Tracciato</h5>
+          <ul class="highlights-list" id="detailTrailHighlights"></ul>
+        </div>
+        <div style="margin-bottom: 26px; background: var(--sand-light); border: 1px solid var(--sand-border); border-radius: var(--radius-sm); padding: 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+            <h4 style="font-size: 1rem; margin-bottom: 0;">Profilo Altimetrico Interattivo</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Quota in metri sul livello del mare</span>
+          </div>
+          <canvas id="detailElevationChart" height="90" style="width: 100%; height: 90px;"></canvas>
+        </div>
+        <div style="margin-bottom: 24px;">
+          <h4 style="margin-bottom: 12px;">Punti di Interesse & Ristori sul Percorso</h4>
+          <div class="pois-grid" id="detailPoisContainer"></div>
+        </div>
+        <div id="detailEquipmentTips"></div>
+      </div>
+
+      <div class="detail-modal-footer">
+        <a id="detailGoogleMapsBtn" href="#" target="_blank" class="btn btn-outline btn-sm">
+          🧭 Naviga al Ritrovo (Google Maps)
+        </a>
+        <button type="button" class="btn btn-accent btn-lg" id="detailDownloadGpxBtn">
+          ⬇️ Scarica Traccia GPX Ufficiale
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="gpxModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: 700;">Download Traccia GPS Ufficiale</span>
+          <h3 id="modalTrailTitle">Ganza Gravel - Traccia GPX</h3>
+        </div>
+        <button type="button" class="modal-close-btn" style="font-size: 1.8rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="gpxLeadForm">
+          <div class="form-group">
+            <label class="form-label" for="gpxUserName">Nome & Cognome *</label>
+            <input type="text" id="gpxUserName" required placeholder="Mario Rossi" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gpxUserEmail">Indirizzo Email *</label>
+            <input type="email" id="gpxUserEmail" required placeholder="mario.rossi@email.it" class="form-input">
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="gpxDisclaimer" required checked>
+            <label for="gpxDisclaimer">Dichiaro di aver preso visione delle condizioni d'uso: pedalo sotto la mia responsabilità nel rispetto del codice della strada.</label>
+          </div>
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            ⬇️ Scarica Traccia GPX Adesso
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Il Tuo Carrello (<span class="cart-badge" style="position:static; display:inline-flex;">0</span>)</h3>
+      <button class="close-drawer" onclick="closeCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items-container" id="cartItemsList"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row"><span>Totale:</span><span id="cartTotal">€0.00</span></div>
+      <a href="store.html" class="btn btn-primary btn-lg" style="width: 100%;">Vai allo Store</a>
+    </div>
+  </div>
+
+  <!-- MODAL AUTENTICAZIONE / LOGIN -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <span class="rustic-sticker" style="font-size:1.15rem; color:var(--primary); display:block; margin-bottom:2px;">O bischero, bentornato!</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 2px;">Area Personale Ganza Crew</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('authModal')" style="font-size: 1.8rem;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Box Credenziali Fittizie Demo in Evidenza -->
+        <div class="demo-box">
+          <div class="demo-box-header">
+            <span class="demo-title">⚡ Credenziali Fittizie Demo:</span>
+            <span class="badge badge-accent" style="font-size:0.65rem;">ACCESSO TEST</span>
+          </div>
+          <div class="demo-credentials-grid">
+            <div class="demo-cred-item">
+              <strong>Email:</strong>
+              <code>mario.ganzo@email.it</code>
+            </div>
+            <div class="demo-cred-item">
+              <strong>Password:</strong>
+              <code>Ganza2026!</code>
+            </div>
+          </div>
+          <button type="button" class="btn-fill-demo" onclick="fillDemoCredentials()">
+            👉 Clicca qui per compilare in automatico le credenziali demo
+          </button>
+        </div>
+
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="authEmail">Indirizzo Email</label>
+            <input type="email" id="authEmail" required placeholder="mario.ganzo@email.it" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="authPassword">Password</label>
+            <input type="password" id="authPassword" required placeholder="••••••••" class="form-input">
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.85rem;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" checked> Ricordami
+            </label>
+            <a href="#" onclick="showToast('Password reimpostata con successo per l\'utente demo!', 'accent'); return false;" style="color:var(--accent); font-weight:600;">Password persa?</a>
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+            🚴 Entra nel Tuo Profilo &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/gpx-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/trails.js"></script>
+</body>
+</html>

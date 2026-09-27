@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Anello del Teatro del Silenzio & Lajatico</name>
+    <desc>Itinerario permanente aperto e pedalabile tutto l'anno. Uno dei percorsi più iconici e fotografati d'Italia: si snoda attorno alle sculture contemporanee e all'anfiteatro all'aperto del Teatro del Silenzio, fondato da Andrea Bocelli. Attraversa vigne storiche, poderi isolati e boschi di querce secolari, con una vista a 360° che spazia dalla Valdera a Volterra.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.823Z</time>
+  </metadata>
+  <wpt lat="43.4734" lon="10.7264">
+    <name>📍 Lajatico Centro (Km 0)</name>
+    <desc>Piazza Vittorio Veneto con bar e fontanella</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.456" lon="10.742">
+    <name>🎭 Teatro del Silenzio (Km 6)</name>
+    <desc>L'iconica scultura e il palco tra le colline</desc>
+    <sym>cultura</sym>
+  </wpt>
+  <wpt lat="43.441" lon="10.71">
+    <name>🌄 Poggio al Lupo (Km 21)</name>
+    <desc>Punto panoramico a 360° su Volterra e Peccioli</desc>
+    <sym>panoramico</sym>
+  </wpt>
+  <wpt lat="43.462" lon="10.689">
+    <name>🌲 Chianni Bivio Sterrato (Km 35)</name>
+    <desc>Tratto ombreggiato tra le querce secolari</desc>
+    <sym>natura</sym>
+  </wpt>
+  <wpt lat="43.481" lon="10.705">
+    <name>☕ Rientro a Lajatico (Km 44)</name>
+    <desc>Caffè e gelato artigianale nella piazzetta</desc>
+    <sym>arrivo</sym>
+  </wpt>
+  <trk>
+    <name>Anello del Teatro del Silenzio & Lajatico</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.4734" lon="10.7264">
+        <ele>205</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.456" lon="10.742">
+        <ele>140</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.441" lon="10.71">
+        <ele>290</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.462" lon="10.689">
+        <ele>180</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.481" lon="10.705">
+        <ele>205</ele>
+        <name>Punto 5</name>
+      </trkpt>
+      <trkpt lat="43.4734" lon="10.7264">
+        <ele>205</ele>
+        <name>Punto 6</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

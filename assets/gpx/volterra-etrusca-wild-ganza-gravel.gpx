@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Volterra Etrusca & Calanchi Wild Trail</name>
+    <desc>Un percorso per veri amanti della ghiaia polverosa, dei silenzi d'alta quota e dei paesaggi toscani più aspri. Si snoda tra le balze franose di Volterra, la macchia mediterranea e le antiche vie etrusche del sale. Tocca la rocca di Montecatini Val di Cecina prima di ridiscendere nelle gole argillose della Val di Cecina.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.824Z</time>
+  </metadata>
+  <wpt lat="43.4022" lon="10.8606">
+    <name>🏛️ Piazza dei Priori Volterra (Km 0)</name>
+    <desc>Partenza dal cuore medievale di Volterra</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.421" lon="10.82">
+    <name>⛰️ Le Balze & Badia Camaldolese (Km 12)</name>
+    <desc>Spettacolo vertiginoso della frana millenaria</desc>
+    <sym>natura</sym>
+  </wpt>
+  <wpt lat="43.395" lon="10.748">
+    <name>🥪 Montecatini Val di Cecina (Km 38)</name>
+    <desc>Botteghe storiche con pane toscano e salumi</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <wpt lat="43.362" lon="10.785">
+    <name>⛏️ Strada del Sale & Miniere (Km 58)</name>
+    <desc>Passaggio vicino alle saline storiche</desc>
+    <sym>storia</sym>
+  </wpt>
+  <wpt lat="43.378" lon="10.84">
+    <name>🏰 Rientro a Porta all'Arco (Km 78)</name>
+    <desc>Rientro sotto la porta etrusca originale</desc>
+    <sym>arrivo</sym>
+  </wpt>
+  <trk>
+    <name>Volterra Etrusca & Calanchi Wild Trail</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.4022" lon="10.8606">
+        <ele>510</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.421" lon="10.82">
+        <ele>180</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.395" lon="10.748">
+        <ele>340</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.362" lon="10.785">
+        <ele>210</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.378" lon="10.84">
+        <ele>510</ele>
+        <name>Punto 5</name>
+      </trkpt>
+      <trkpt lat="43.4022" lon="10.8606">
+        <ele>510</ele>
+        <name>Punto 6</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

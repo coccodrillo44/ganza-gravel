@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ganza Gravel official portal - https://www.ganzagravel.it"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>7° Ganza Gravel - La Ganzata (Lungo)</name>
+    <desc>La regina della Ganza Gravel. 92 chilometri che mettono alla prova gambe e cuore nella Toscana più ancestrale e selvaggia. Dalle vigne della Valdera si sale affrontando le celebri rampe argillose dei Calanchi fino a sfiorare la città etrusca di Volterra, per poi scendere verso il Teatro del Silenzio di Lajatico. 3 ricchi ristori intermedi con rifornimenti energetici e specialità toscane.</desc>
+    <author>
+      <name>Ganza Gravel Staff - David Bardini &amp; Daniele Pelorossi</name>
+      <link href="https://www.ganzagravel.it"/>
+    </author>
+    <time>2026-09-26T08:09:35.823Z</time>
+  </metadata>
+  <wpt lat="43.5486" lon="10.7208">
+    <name>🏁 Partenza Peccioli (Km 0)</name>
+    <desc>Piazza del Popolo Peccioli</desc>
+    <sym>start</sym>
+  </wpt>
+  <wpt lat="43.521" lon="10.765">
+    <name>🍷 Ristoro 1: Podere La Chiesa (Km 26)</name>
+    <desc>Frutta fresca, crostate fatte in casa e sali minerali</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <wpt lat="43.475" lon="10.785">
+    <name>🧀 Ristoro 2: Volterra Balze (Km 48)</name>
+    <desc>Pecorino delle Balze DOP, finocchiona toscana e pane casereccio</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <wpt lat="43.402" lon="10.86">
+    <name>🎭 Teatro del Silenzio Lajatico (Km 68)</name>
+    <desc>Sosta panoramica all'anfiteatro all'aperto di Andrea Bocelli</desc>
+    <sym>cultura</sym>
+  </wpt>
+  <wpt lat="43.385" lon="10.812">
+    <name>🥖 Ristoro 3: Orciatico (Km 78)</name>
+    <desc>Schiacciata all'olio, crostini e idratazione prima del rientro</desc>
+    <sym>ristoro</sym>
+  </wpt>
+  <wpt lat="43.473" lon="10.726">
+    <name>🍺 Traguardo Peccioli & Gran Festa (Km 92)</name>
+    <desc>Medaglia finisher di legno, docce calde e pasta party no-stop</desc>
+    <sym>arrivo</sym>
+  </wpt>
+  <trk>
+    <name>7° Ganza Gravel - La Ganzata (Lungo)</name>
+    <type>Cycling / Gravel</type>
+    <trkseg>
+      <trkpt lat="43.5486" lon="10.7208">
+        <ele>140</ele>
+        <name>Punto 1</name>
+      </trkpt>
+      <trkpt lat="43.521" lon="10.765">
+        <ele>230</ele>
+        <name>Punto 2</name>
+      </trkpt>
+      <trkpt lat="43.475" lon="10.785">
+        <ele>120</ele>
+        <name>Punto 3</name>
+      </trkpt>
+      <trkpt lat="43.402" lon="10.86">
+        <ele>480</ele>
+        <name>Punto 4</name>
+      </trkpt>
+      <trkpt lat="43.385" lon="10.812">
+        <ele>520</ele>
+        <name>Punto 5</name>
+      </trkpt>
+      <trkpt lat="43.473" lon="10.726">
+        <ele>280</ele>
+        <name>Punto 6</name>
+      </trkpt>
+      <trkpt lat="43.518" lon="10.685">
+        <ele>350</ele>
+        <name>Punto 7</name>
+      </trkpt>
+      <trkpt lat="43.5486" lon="10.7208">
+        <ele>140</ele>
+        <name>Punto 8</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
